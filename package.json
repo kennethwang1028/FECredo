@@ -20,11 +20,18 @@
   },
   "homepage": "https://github.com/kennethwang1028/FECredo#readme",
   "dependencies": {
+    "axios": "^0.21.1",
     "express": "^4.17.1",
     "node": "^16.5.0",
     "nodemon": "^2.0.12",
+    "path": "^0.12.7",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "react-redux": "^7.2.4",
+    "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0",
+    "redux": "^4.1.0",
+    "styled-components": "^5.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.14.8",
