@@ -3,6 +3,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 
 import Routes from './URL/Routes';
 import NavTopBar from './URL/NavTopBar/NavTopBar';
+import NavSideBar from './URL/NavSideBar/NavSideBar';
 
 const App = () => (
   <div style={{
@@ -10,6 +11,7 @@ const App = () => (
   }}
   >
     <Router>
+      <NavSideBar />
       <NavTopBar />
       <Routes />
     </Router>

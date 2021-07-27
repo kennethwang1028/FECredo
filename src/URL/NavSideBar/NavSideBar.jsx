@@ -1,20 +1,33 @@
 import React from 'react';
 
-import Monkey from '../../Logo/Monkey';
-
 import {
   NSBcontainer,
   NavLink,
   Icon,
 } from './NSBStyles';
 
-const NavTopBar = () => (
+const NavSideBar = () => (
   <NSBcontainer>
-    <Monkey />
+    <Icon
+      alt="user"
+      src="./icon/icon.svg"
+    />
+    <NavLink to="/home">
+      <Icon
+        alt="user"
+        src="./icon/home.svg"
+      />
+    </NavLink>
     <NavLink to="/">
       <Icon
         alt="user"
         src="./icon/search.svg"
+      />
+    </NavLink>
+    <NavLink to="/">
+      <Icon
+        alt="user"
+        src="./icon/star.svg"
       />
     </NavLink>
     <NavLink to="/location">
@@ -35,7 +48,13 @@ const NavTopBar = () => (
         src="./icon/portrait.svg"
       />
     </NavLink>
+    <NavLink to="/">
+      <Icon
+        alt="user"
+        src="./icon/list.svg"
+      />
+    </NavLink>
   </NSBcontainer>
 );
 
-export default NavTopBar;
+export default NavSideBar;
