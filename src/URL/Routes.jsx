@@ -1,6 +1,9 @@
 import React from 'react';
 import { Route, Switch } from 'react-router';
 
+import LogIn from '../Component/LogIn/LogIn';
+import SignUp from '../Component/LogIn/SignUp';
+
 const Routes = () => (
   <Switch>
     <Route
@@ -30,8 +33,15 @@ const Routes = () => (
     <Route
       path="/login"
       exact
-      render={() => <div>login</div>}
-    />
+    >
+      <LogIn />
+    </Route>
+    <Route
+      path="/signup"
+      exact
+    >
+      <SignUp />
+    </Route>
   </Switch>
 );
 

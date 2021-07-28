@@ -17,6 +17,7 @@ export const NSBcontainer = styled.div`
 
 export const NavLink = styled(Link)`
   display: flex;
+  font-size:80%;
   align-items: center;
   height: 100%;
   cursor: pointer;
@@ -24,7 +25,7 @@ export const NavLink = styled(Link)`
 `;
 
 export const Icon = styled.img`
-  width: 50%;
+  width: 30px;
   border: 2px solid black;
   border-radius : 10px;
   padding: 3px;
@@ -33,5 +34,18 @@ export const Icon = styled.img`
   &:hover {
     background-color:#a5aaad;
     border-radius: 5px;
+  }
+`;
+
+export const Text = styled.div`
+  margin-left:5px;
+  color:black;
+  text-decoration: black wavy underline;
+  &:hover {
+    background-color:#a5aaad;
+    border-radius: 5px;
+  }
+  &:active {
+    color:white;
   }
 `;

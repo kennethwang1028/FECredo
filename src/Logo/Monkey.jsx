@@ -247,6 +247,23 @@ const Monkey22 = styled.div`
   z-index: 25;
 `;
 
+const Monkey23 = styled.div`
+  width: 10%;
+  height: 10%;
+  top: 70%;
+  left: 55%;
+  position: absolute;
+  background-color: black;
+  z-index: 24;
+  clip-path: ellipse(37% 40% at 50% 50%);
+`;
+
+const Monkey24 = styled.div`
+  width: 260px;
+  height: 260px;
+  position: relative;
+`;
+
 const Monkey = () => (
   <Monkey0>
     <Monkey1 />
@@ -263,7 +280,7 @@ const Monkey = () => (
     <Monkey12 />
     <Monkey13 />
     <Monkey14 />
-    <Monkey15 />
+    <Monkey23 />
     <Monkey16 />
     <Monkey17 />
     <Monkey18 />
