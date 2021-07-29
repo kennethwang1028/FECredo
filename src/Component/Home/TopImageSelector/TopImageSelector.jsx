@@ -1,4 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+
+import useTopImageSelector from './useTopImageSelector';
+import imgSize from '../../Function/imgSize';
 
 import {
   TopContainer,
@@ -13,57 +16,24 @@ import TopData from '../homeData';
 // fetch
 
 const TopImageSelector = () => {
-  const topData = TopData.TopData; // need to change
-
-  const [topImageInfo, setTopImageInfo] = useState(topData[0]);
-  const [topIndex, setTopIndex] = useState(0);
-  const [isTime, setIsTime] = useState(true);
-  const [imagePosition, setImagePosition] = useState(0);
-
-  const len = topData.length;
-
-  useEffect(() => {
-    setTimeout(() => {
-      if (topIndex >= len - 1) {
-        setTopIndex(0);
-      } else {
-        setTopIndex(topIndex + 1);
-      }
-      const num = Math.floor(Math.random() * 3);
-      setTopImageInfo(topData[topIndex]);
-      setIsTime(!isTime);
-      setImagePosition(num);
-    }, 5000);
-  }, [isTime]);
-
-  const HandleClickedLeft = () => {
-    if (topIndex === 0) {
-      setTopIndex(len - 1);
-    } else {
-      setTopIndex(topIndex - 1);
-    }
-    setTopImageInfo(topData[topIndex]);
-  };
-
-  const HandleClickedRight = () => {
-    if (topIndex === len - 1) {
-      setTopIndex(0);
-    } else {
-      setTopIndex(topIndex + 1);
-    }
-    setTopImageInfo(topData[topIndex]);
-  };
+  const {
+    HandleClickedRight,
+    HandleClickedLeft,
+    topImageInfo,
+    imagePosition,
+  } = useTopImageSelector(TopData);
 
   return (
     <TopContainer
-      image={topImageInfo.url}
+      image={imgSize(topImageInfo.url, 250)}
     >
       <TopButton
+        data-testid="leftbutton"
         onClick={HandleClickedLeft}
       >
         {'<<'}
       </TopButton>
-      {imagePosition === 0 ? <TopImage src={topImageInfo.url} /> : null}
+      {imagePosition === 0 ? <TopImage src={imgSize(topImageInfo.url, 250)} /> : null}
       <TopText>
         <div>
           {topImageInfo.name}
@@ -72,15 +42,16 @@ const TopImageSelector = () => {
           {topImageInfo.slogan}
         </TopTextP>
       </TopText>
-      {imagePosition === 1 ? <TopImage src={topImageInfo.url} /> : null}
+      {imagePosition === 1 ? <TopImage src={imgSize(topImageInfo.url, 250)} /> : null}
       <TopText>
         {`Price: $ ${topImageInfo.default_price}.00`}
         <TopCheckButton>
           check
         </TopCheckButton>
       </TopText>
-      {imagePosition === 2 ? <TopImage src={topImageInfo.url} /> : null}
+      {imagePosition === 2 ? <TopImage src={imgSize(topImageInfo.url, 250)} /> : null}
       <TopButton
+        data-testid="rightbutton"
         onClick={HandleClickedRight}
       >
         {'>>'}
