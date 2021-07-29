@@ -61,7 +61,7 @@ describe('function works correct', () => {
   });
 });
 
-it('should have default addUserReview and moreReview', () => {
+it('should have defaultProps', () => {
   expect(InputText.defaultProps.text).toBeDefined();
   expect(InputText.defaultProps.isWarning).toBeDefined();
   expect(InputText.defaultProps.handleChange()).toBeDefined();

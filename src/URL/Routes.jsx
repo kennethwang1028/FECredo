@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, Switch } from 'react-router';
 
+import Home from '../Component/Home/Home';
 import LogIn from '../Component/LogIn/LogIn';
 import SignUp from '../Component/LogIn/SignUp';
 
@@ -41,6 +42,12 @@ const Routes = () => (
       exact
     >
       <SignUp />
+    </Route>
+    <Route
+      path="/home"
+      exact
+    >
+      <Home />
     </Route>
   </Switch>
 );
