@@ -5,8 +5,6 @@ import React from 'react';
 import {
   render,
   cleanup,
-  fireEvent,
-  screen,
 } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
@@ -21,5 +19,26 @@ describe('render correct', () => {
     );
     expect(getByTestId('leftbutton')).toBeInTheDocument();
     expect(getByTestId('rightbutton')).toBeInTheDocument();
+  });
+  it('should render only one topimage', () => {
+    const { getAllByTestId } = render(
+      <TopImageSelector testPosition={0} />,
+    );
+    const arr = getAllByTestId('topimage');
+    expect(arr.length).toBe(1);
+  });
+  it('should render only one topimage', () => {
+    const { getAllByTestId } = render(
+      <TopImageSelector testPosition={1} />,
+    );
+    const arr = getAllByTestId('topimage');
+    expect(arr.length).toBe(1);
+  });
+  it('should render only one topimage', () => {
+    const { getAllByTestId } = render(
+      <TopImageSelector testPosition={2} />,
+    );
+    const arr = getAllByTestId('topimage');
+    expect(arr.length).toBe(1);
   });
 });

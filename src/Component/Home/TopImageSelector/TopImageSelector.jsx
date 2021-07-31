@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import useTopImageSelector from './useTopImageSelector';
 import imgSize from '../../Function/imgSize';
@@ -15,17 +16,17 @@ import {
 import TopData from '../homeData';
 // fetch
 
-const TopImageSelector = () => {
+const TopImageSelector = ({ testPosition }) => {
   const {
     HandleClickedRight,
     HandleClickedLeft,
     topImageInfo,
     imagePosition,
   } = useTopImageSelector(TopData);
-
+  const showPosition = testPosition || imagePosition;
   return (
     <TopContainer
-      image={imgSize(topImageInfo.url, 250)}
+      image={imgSize(topImageInfo.photo, 250)}
     >
       <TopButton
         data-testid="leftbutton"
@@ -33,7 +34,14 @@ const TopImageSelector = () => {
       >
         {'<<'}
       </TopButton>
-      {imagePosition === 0 ? <TopImage src={imgSize(topImageInfo.url, 250)} /> : null}
+      {showPosition === 0
+        ? (
+          <TopImage
+            data-testid="topimage"
+            src={imgSize(topImageInfo.photo, 250)}
+          />
+        )
+        : null}
       <TopText>
         <div>
           {topImageInfo.name}
@@ -42,14 +50,28 @@ const TopImageSelector = () => {
           {topImageInfo.slogan}
         </TopTextP>
       </TopText>
-      {imagePosition === 1 ? <TopImage src={imgSize(topImageInfo.url, 250)} /> : null}
+      {showPosition === 1
+        ? (
+          <TopImage
+            data-testid="topimage"
+            src={imgSize(topImageInfo.photo, 250)}
+          />
+        )
+        : null}
       <TopText>
         {`Price: $ ${topImageInfo.default_price}.00`}
         <TopCheckButton>
           check
         </TopCheckButton>
       </TopText>
-      {imagePosition === 2 ? <TopImage src={imgSize(topImageInfo.url, 250)} /> : null}
+      {showPosition === 2
+        ? (
+          <TopImage
+            data-testid="topimage"
+            src={imgSize(topImageInfo.photo, 250)}
+          />
+        )
+        : null}
       <TopButton
         data-testid="rightbutton"
         onClick={HandleClickedRight}
@@ -58,6 +80,14 @@ const TopImageSelector = () => {
       </TopButton>
     </TopContainer>
   );
+};
+
+TopImageSelector.propTypes = {
+  testPosition: PropTypes.number,
+};
+
+TopImageSelector.defaultProps = {
+  testPosition: 0,
 };
 
 export default TopImageSelector;
