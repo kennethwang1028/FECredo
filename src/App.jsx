@@ -14,11 +14,9 @@ const App = () => (
     }}
     >
       <Router>
-
         <NavSideBar />
         <NavTopBar />
         <Routes />
-
       </Router>
     </div>
   </Provider>

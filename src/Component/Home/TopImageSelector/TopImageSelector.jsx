@@ -24,6 +24,7 @@ const TopImageSelector = ({ testPosition }) => {
     imagePosition,
   } = useTopImageSelector(TopData);
   const showPosition = testPosition || imagePosition;
+
   return (
     <TopContainer
       image={imgSize(topImageInfo.photo, 250)}

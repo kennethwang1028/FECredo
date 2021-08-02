@@ -23,6 +23,7 @@ export const TopContainer = styled.div`
   background-size:cover;
   padding-top:20px;
   position: relative;
+  margin-top: 20px;
 `;
 
 export const TopButton = styled.button`

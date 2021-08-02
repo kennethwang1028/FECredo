@@ -2,6 +2,7 @@ import React from 'react';
 import { Route, Switch } from 'react-router';
 
 import Home from '../Component/Home/Home';
+import Search from '../Component/Search/Search';
 import LogIn from '../Component/LogIn/LogIn';
 import SignUp from '../Component/LogIn/SignUp';
 
@@ -48,6 +49,16 @@ const Routes = () => (
       exact
     >
       <Home />
+    </Route>
+    <Route
+      path="/search/:categoryId"
+    >
+      <Search />
+    </Route>
+    <Route
+      path="/search"
+    >
+      <Search />
     </Route>
   </Switch>
 );

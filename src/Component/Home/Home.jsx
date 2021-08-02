@@ -14,8 +14,6 @@ import PromoteData from './homeData';
 import CategoryData from './homeData';
 // fetch
 
-console.log(PromoteData);
-
 const Home = () => {
   const isIconListClicked = useSelector((state) => state.sideBar.isIconListClicked);
 
@@ -32,7 +30,7 @@ const Home = () => {
     <HomeContainer
       extent={isIconListClicked}
     >
-      <TopImageSelector />
+      {/* <TopImageSelector /> */}
       <RowContainer>
         {promoteData.map((i) => (
           <CategoryBoxSingle
@@ -59,7 +57,6 @@ const Home = () => {
           ))}
         </RowContainer>
       ))}
-
     </HomeContainer>
   );
 };

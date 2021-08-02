@@ -6,3 +6,9 @@ export {
   userPasswordEnter,
   userCityEnter,
 } from './User/UserAction';
+
+export {
+  CategoryIdSelected,
+  CategoryNameSelected,
+  CategoryTextSearch,
+} from './Category/CategoryAction';
