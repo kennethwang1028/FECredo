@@ -26,6 +26,8 @@ const NavTopBar = () => {
         <NavIcon
           alt="user"
           src="./icon/search.svg"
+          width="50"
+          height="50"
         />
       </NavLink>
       {isIconListClicked ? null : <NavInputText />}
@@ -33,6 +35,8 @@ const NavTopBar = () => {
         <NavIcon
           alt="user"
           src="./icon/location.svg"
+          width="50"
+          height="50"
         />
       </NavLink>
       {isIconListClicked ? null : <NavInputText />}
@@ -40,12 +44,16 @@ const NavTopBar = () => {
         <NavIcon
           alt="user"
           src="./icon/portrait.svg"
+          width="50"
+          height="50"
         />
       </NavLink>
       <NavLink to="/shopcart">
         <NavIcon
           alt="user"
           src="./icon/shopcart.svg"
+          width="50"
+          height="50"
         />
       </NavLink>
     </TopBarContainer>

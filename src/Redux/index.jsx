@@ -17,3 +17,8 @@ export {
   CategoryNameSelected,
   CategoryTextSearch,
 } from './Category/CategoryAction';
+
+export {
+  ProductEnter,
+  ProductMainImageSelected,
+} from './Product/ProductAction';

@@ -18,7 +18,8 @@ const CategoryBoxSingle = (props) => {
   const history = useHistory();
 
   const handleClicked = () => {
-    history.push(`/product/${id}`);
+    history.push('/product');
+    console.log('id need to add to redux');
   };
 
   return (

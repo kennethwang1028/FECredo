@@ -3,7 +3,7 @@ import { NavLink as Link } from 'react-router-dom';
 
 export const AppContainer = styled.div`
   margin: -8px;
-  font-size: 40px;
+  font-size: 4vw;
   background-color:black;
   min-width: 500px;
   overflow:auto;
@@ -34,9 +34,28 @@ export const TopBarContainer = styled.div`
     if (props.width < 500) {
       return '50px;';
     } if (props.isIconListClicked) {
-      return '30vw;';
+      return '31vw;';
     }
-    return '10vw;';
+    return '11vw;';
+  }}
+  justify-content: space-between;
+  padding-right: 2vw;
+  align-items: center;
+`;
+
+export const RoutesContainer = styled.div`
+  background: red;
+  display: flex;
+  padding-left:${(props) => {
+    if (props.width < 500) {
+      return '50px;';
+    } if (props.width >= 500 && props.width <= 800) {
+      return '11vw;';
+    }
+    if (props.isIconListClicked) {
+      return '31vw;';
+    }
+    return '7vw;';
   }}
   justify-content: space-between;
   padding-right: 2vw;

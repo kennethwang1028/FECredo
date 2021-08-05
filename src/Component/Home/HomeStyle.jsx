@@ -11,7 +11,7 @@ export const HomeContainer = styled.div`
 `;
 
 export const TopContainer = styled.div`
-  width:90%;
+  // width:90%;
   height:300px;
   // overflow:hidden;
   display:flex;

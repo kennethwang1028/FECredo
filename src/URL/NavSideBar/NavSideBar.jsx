@@ -45,6 +45,8 @@ const NavSideBar = () => {
       <NavIcon
         alt="user"
         src="./icon/list.svg"
+        width="50"
+        height="50"
         onClick={() => dispatch(ListClicked())}
       />
       {[...Array(numberofIcon(width, height, num))].map((i, index) => (
@@ -54,6 +56,8 @@ const NavSideBar = () => {
             <NavIcon
               alt={iconArray[index]}
               src={`./icon/${iconArray[index]}.svg`}
+              width="50"
+              height="50"
             />
             {isIconListClicked ? <NavText>{iconTextArray[index]}</NavText> : null}
           </NavLink>
@@ -63,6 +67,8 @@ const NavSideBar = () => {
         <NavIcon
           alt="login"
           src="./icon/portrait.svg"
+          width="50"
+          height="50"
         />
         {isIconListClicked ? <NavText>Log In</NavText> : null}
       </NavLink>
@@ -72,6 +78,8 @@ const NavSideBar = () => {
             <NavIcon
               alt="user"
               src="./icon/more.svg"
+              width="50"
+              height="50"
               onClick={() => dispatch(ListClicked())}
             />
             {isIconListClicked
