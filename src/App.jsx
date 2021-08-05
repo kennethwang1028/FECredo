@@ -7,18 +7,17 @@ import NavTopBar from './URL/NavTopBar/NavTopBar';
 import NavSideBar from './URL/NavSideBar/NavSideBar';
 import store from './Redux/Store';
 
+import { AppContainer } from './Styles';
+
 const App = () => (
   <Provider store={store}>
-    <div style={{
-      width: '102%', margin: '-10px', fontSize: '40px', color: 'green',
-    }}
-    >
+    <AppContainer>
       <Router>
         <NavSideBar />
         <NavTopBar />
         <Routes />
       </Router>
-    </div>
+    </AppContainer>
   </Provider>
 );
 

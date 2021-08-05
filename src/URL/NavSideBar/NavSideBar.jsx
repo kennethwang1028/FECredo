@@ -1,77 +1,92 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { ListClicked } from '../../Redux/index';
-
-import {
-  NSBcontainer,
-  NavLink,
-  Icon,
-  Text,
-} from './NSBStyles';
+import { useHistory } from 'react-router-dom';
 
 import useWindowDimensions from '../../window/window';
+import numberofIcon from '../../Component/Function/numberofIcon';
+
+import {
+  ListClicked,
+  windowHeightSet,
+  windowWidthSet,
+} from '../../Redux';
+
+import {
+  SideBarContainer,
+  NavLink,
+  NavIcon,
+  NavText,
+  Select,
+} from '../../Styles';
 
 const NavSideBar = () => {
   const isIconListClicked = useSelector((state) => state.sideBar.isIconListClicked);
   const dispatch = useDispatch();
-  // const { height, width } = useWindowDimensions();
+  const { height, width } = useWindowDimensions();
+  dispatch(windowHeightSet(height));
+  dispatch(windowWidthSet(width));
+
+  const history = useHistory();
+
+  const iconArray = [
+    'home', 'search', 'bookmark', 'location', 'shopcart', 'setting'];
+  const iconTextArray = [
+    'Home', 'Search', 'Bookmark', 'Location', 'Shop Cart', 'Setting'];
+  const num = iconArray.length;
+
+  const handleChange = (event) => {
+    history.push(event.target.value);
+  };
+
   return (
-    <NSBcontainer style={isIconListClicked ? { minWidth: '220px' } : null}>
-      <Icon
+    <SideBarContainer
+      isIconListClicked={isIconListClicked}
+    >
+      <NavIcon
         alt="user"
         src="./icon/list.svg"
         onClick={() => dispatch(ListClicked())}
       />
-      <NavLink to="/home">
-        <Icon
-          alt="home"
-          src="./icon/home.svg"
-        />
-        {isIconListClicked ? <Text>Home Page</Text> : null}
-      </NavLink>
-      <NavLink to="/search">
-        <Icon
-          alt="search"
-          src="./icon/search.svg"
-        />
-        {isIconListClicked ? <Text>Search</Text> : null}
-      </NavLink>
-      <NavLink to="/bookmark">
-        <Icon
-          alt="bookmark"
-          src="./icon/star.svg"
-        />
-        {isIconListClicked ? <Text>Book Mark</Text> : null}
-      </NavLink>
-      <NavLink to="/location">
-        <Icon
-          alt="location"
-          src="./icon/location.svg"
-        />
-        {isIconListClicked ? <Text>Location</Text> : null}
-      </NavLink>
-      <NavLink to="/shopcart">
-        <Icon
-          alt="shopcart"
-          src="./icon/shopcart.svg"
-        />
-        {isIconListClicked ? <Text>Shop Cart</Text> : null}
-      </NavLink>
+      {[...Array(numberofIcon(width, height, num))].map((i, index) => (
+        // eslint-disable-next-line react/no-array-index-key
+        <div key={index}>
+          <NavLink to={`/${iconArray[index]}`}>
+            <NavIcon
+              alt={iconArray[index]}
+              src={`./icon/${iconArray[index]}.svg`}
+            />
+            {isIconListClicked ? <NavText>{iconTextArray[index]}</NavText> : null}
+          </NavLink>
+        </div>
+      ))}
       <NavLink to="/login">
-        <Icon
+        <NavIcon
           alt="login"
           src="./icon/portrait.svg"
         />
-        {isIconListClicked ? <Text>Log In</Text> : null}
+        {isIconListClicked ? <NavText>Log In</NavText> : null}
       </NavLink>
-      <NavLink to="/setting">
-        <Icon
-          alt="setting"
-          src="./icon/setting.svg"
-        />
-        {isIconListClicked ? <Text>Setting</Text> : null}
-      </NavLink>
-    </NSBcontainer>
+      {numberofIcon(width, height, num) === num ? null
+        : (
+          <div style={{ display: 'flex', flexDirection: 'row' }}>
+            <NavIcon
+              alt="user"
+              src="./icon/more.svg"
+              onClick={() => dispatch(ListClicked())}
+            />
+            {isIconListClicked
+              ? (
+                <Select onChange={handleChange}>
+                  <option>More</option>
+                  {iconArray.slice(numberofIcon(width, height, num)).map((i) => (
+                    <option key={i}>{i}</option>
+                  ))}
+                </Select>
+              )
+              : null}
+          </div>
+        )}
+    </SideBarContainer>
   );
 };
 

@@ -5,53 +5,50 @@ import Monkey from '../../Logo/Monkey';
 import useWindowDimensions from '../../window/window';
 
 import {
-  NTBcontainer,
-  NTBSection,
+  TopBarContainer,
   NavLink,
-  Icon,
-  InputText,
-} from './NTBStyles';
+  NavIcon,
+  NavInputText,
+} from '../../Styles';
 
 const NavTopBar = () => {
-  const isIconListClicked = useSelector((state) => state.isIconListClicked);
-  const { height, width } = useWindowDimensions();
-  return (
-    <NTBcontainer style={isIconListClicked ? { paddingLeft: '250px' } : null}>
-      <NTBSection>
-        <Monkey />
-      </NTBSection>
-      <NTBSection>
-        {isIconListClicked ? null : <InputText />}
-        <NavLink to="/">
-          <Icon
-            alt="user"
-            src="./icon/search.svg"
-          />
-        </NavLink>
-        {isIconListClicked ? null : <InputText />}
-        <NavLink to="/location">
-          <Icon
-            alt="user"
-            src="./icon/location.svg"
-          />
-        </NavLink>
-      </NTBSection>
-      <NTBSection>
-        <NavLink to="/shopcart">
-          <Icon
-            alt="user"
-            src="./icon/shopcart.svg"
-          />
-        </NavLink>
-        <NavLink to="/login">
-          <Icon
-            alt="user"
-            src="./icon/portrait.svg"
-          />
-        </NavLink>
-      </NTBSection>
+  const isIconListClicked = useSelector((state) => state.sideBar.isIconListClicked);
+  const { width } = useWindowDimensions();
 
-    </NTBcontainer>
+  return (
+    <TopBarContainer
+      isIconListClicked={isIconListClicked}
+      width={width}
+    >
+      <Monkey />
+      {width < 900 || isIconListClicked ? null : <NavInputText />}
+      <NavLink to="/">
+        <NavIcon
+          alt="user"
+          src="./icon/search.svg"
+        />
+      </NavLink>
+      {isIconListClicked ? null : <NavInputText />}
+      <NavLink to="/location">
+        <NavIcon
+          alt="user"
+          src="./icon/location.svg"
+        />
+      </NavLink>
+      {isIconListClicked ? null : <NavInputText />}
+      <NavLink to="/login">
+        <NavIcon
+          alt="user"
+          src="./icon/portrait.svg"
+        />
+      </NavLink>
+      <NavLink to="/shopcart">
+        <NavIcon
+          alt="user"
+          src="./icon/shopcart.svg"
+        />
+      </NavLink>
+    </TopBarContainer>
   );
 };
 

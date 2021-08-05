@@ -2,8 +2,12 @@ import styled from 'styled-components';
 import React from 'react';
 
 const Monkey0 = styled.div`
-  width: 50px;
-  height: 50px;
+  width: 10vw;
+  max-width:85px;
+  min-width:50px;
+  height: 10vw;
+  max-height:85px;
+  min-height:50px;
   position: relative;
 `;
 

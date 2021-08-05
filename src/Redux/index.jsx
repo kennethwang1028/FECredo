@@ -1,3 +1,8 @@
+export {
+  windowHeightSet,
+  windowWidthSet,
+} from './Window/WindowAction';
+
 export { ListClicked } from './SideBar/SideBarAction';
 
 export {
