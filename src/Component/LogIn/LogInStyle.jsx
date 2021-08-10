@@ -7,6 +7,10 @@ export const LogInContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color:white;
+  width:  ${(props) => (props.width - 15)}px;
+  overflow:auto;
+  position:relative;
 `;
 
 export const SignInContainer = styled.div`

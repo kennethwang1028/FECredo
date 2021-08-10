@@ -21,4 +21,6 @@ export {
 export {
   ProductEnter,
   ProductMainImageSelected,
+  ProductMainStyleSelected,
+  ProductIdSelected,
 } from './Product/ProductAction';

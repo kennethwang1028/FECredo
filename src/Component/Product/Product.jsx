@@ -1,28 +1,57 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import axios from 'axios';
 
 import {
   ProductEnter,
   ProductMainImageSelected,
+  ProductMainStyleSelected,
 } from '../../Redux';
 
 import ProductDetail from './ProductDetail/ProductDetail';
-import { Container } from './ProductStyle';
+import ProductRelated from './ProductRelated/ProductRelated';
 
-import data from '../../../Data/product';
+import {
+  Container,
+} from './ProductStyle';
 
 const Product = () => {
-  const [loading, setLoading] = useState(false);
+  const width = useSelector((state) => state.window.windowWidth);
+  const productId = useSelector((state) => state.product.productId);
+
   const dispatch = useDispatch();
+
+  const [loading, setLoading] = useState(false);
+
   useEffect(() => {
-    dispatch(ProductEnter(data[0]));
-    dispatch(ProductMainImageSelected(data[0].photos[0].photoId));
-    setLoading(true);
-  }, []);
+    axios(`http://localhost:3001/products/${productId}`)
+      .then((res) => {
+        const { data } = res;
+        const mainStyle = data.styles[0] || [];
+        const ImageList = mainStyle.photos || [{ photoId: 0, url: './icon/no.jpeg' }];
+        const mainImage = ImageList[0];
+
+        dispatch(ProductEnter(data));
+        dispatch(ProductMainStyleSelected(mainStyle));
+        dispatch(ProductMainImageSelected(mainImage.url));
+
+        setLoading(true);
+      });
+  }, [productId]);
+
   return (
-    <Container>
-      {loading ? <ProductDetail /> : <div>loading</div>}
-    </Container>
+    <>
+      {loading
+        ? (
+          <Container
+            width={width}
+          >
+            <ProductDetail />
+            <ProductRelated />
+          </Container>
+        )
+        : <div>loading</div>}
+    </>
   );
 };
 

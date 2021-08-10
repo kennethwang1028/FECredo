@@ -1,2 +1,4 @@
 export const Product = 'Product';
-export const ProductMainImage = 'Product-Main-Image';
+export const productMainImageURL = 'Product-Main-Image';
+export const ProductMainStyle = 'Product-Main-Style';
+export const ProductId = 'Product-Id';

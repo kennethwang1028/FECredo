@@ -1,6 +1,8 @@
 import {
   Product,
-  ProductMainImage,
+  productMainImageURL,
+  ProductMainStyle,
+  ProductId,
 } from './ProductType';
 
 export const ProductEnter = (object = {}) => ({
@@ -8,7 +10,17 @@ export const ProductEnter = (object = {}) => ({
   payload: object,
 });
 
-export const ProductMainImageSelected = (index = 0) => ({
-  type: ProductMainImage,
-  payload: index,
+export const ProductMainImageSelected = (url = './icon/no.jpeg') => ({
+  type: productMainImageURL,
+  payload: url,
+});
+
+export const ProductMainStyleSelected = (object = {}) => ({
+  type: ProductMainStyle,
+  payload: object,
+});
+
+export const ProductIdSelected = (id = 0) => ({
+  type: ProductId,
+  payload: id,
 });

@@ -10,12 +10,15 @@ import {
 } from '../../../ProductStyle';
 
 const ProductSmallImages = () => {
-  const imageList = useSelector((state) => state.product.product.photos);
-  const ProductMainImage = useSelector((state) => state.product.productMainImage);
+  let imageList = useSelector((state) => state.product.productMainStyle.photos) || [];
+  if (imageList.length > 7) {
+    imageList = imageList.slice(0, 6);
+  }
+  const productMainImageURL = useSelector((state) => state.product.productMainImageURL);
   const dispatch = useDispatch();
 
-  const handleClicked = (id) => {
-    dispatch(ProductMainImageSelected(id));
+  const handleClicked = (url) => {
+    dispatch(ProductMainImageSelected(url));
   };
 
   return (
@@ -26,8 +29,8 @@ const ProductSmallImages = () => {
           src={imgSize(i.url, 50)}
           width="50"
           height="50"
-          isSeleced={i.photoId === ProductMainImage}
-          onClick={() => handleClicked(i.photoId)}
+          isSeleced={i.url === productMainImageURL}
+          onClick={() => handleClicked(i.url)}
         />
       ))}
     </ProductSmallImageContainer>

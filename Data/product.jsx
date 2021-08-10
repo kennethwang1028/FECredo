@@ -5,7 +5,6 @@ const data = [
     slogan: 'Blend in to your crowd',
     description: 'The So Fatigues will wake you up and fit you in. This high energy camo will have you blending in to even the wildest surroundings.',
     category: 'Jackets',
-    default_price: 140,
     feature: [{
       name: 'Fabric',
       value: 'Canvas',
@@ -14,34 +13,400 @@ const data = [
       name: 'Buttons',
       value: 'Brass',
     }],
-    photos: [
+    styles: [
       {
-        photoId: 1,
-        url: 'https://images.unsplash.com/photo-1501088430049-71c79fa3283e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80',
+        styleId: 1,
+        styleName: 'Forest Green & Black',
+        onSale: null,
+        price: 140,
+        skus: [{
+          skusId: 1,
+          size: 'xs',
+          qty: 10,
+        },
+        {
+          skusId: 2,
+          size: 's',
+          qty: 2,
+        },
+        {
+          skusId: 3,
+          size: 'm',
+          qty: 5,
+        },
+        {
+          skusId: 4,
+          size: 'xl',
+          qty: 0,
+        },
+        ],
+        photos: [
+          {
+            photoId: 1,
+            url: 'https://images.unsplash.com/photo-1501088430049-71c79fa3283e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80',
+          },
+          {
+            photoId: 2,
+            url: 'https://images.unsplash.com/photo-1534011546717-407bced4d25c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2734&q=80',
+          },
+          {
+            photoId: 3,
+            url: 'https://images.unsplash.com/photo-1549831243-a69a0b3d39e0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2775&q=80',
+          },
+          {
+            photoId: 6,
+            url: 'https://images.unsplash.com/photo-1527522883525-97119bfce82d?ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80',
+          },
+          {
+            photoId: 4,
+            url: 'https://images.unsplash.com/photo-1556648202-80e751c133da?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80',
+          },
+          {
+            photoId: 5,
+            url: 'https://images.unsplash.com/photo-1532543491484-63e29b3c1f5d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80',
+          },
+        ],
       },
       {
-        photoId: 2,
-        url: 'https://images.unsplash.com/photo-1534011546717-407bced4d25c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2734&q=80',
-      },
-      {
-        photoId: 3,
-        url: 'https://images.unsplash.com/photo-1549831243-a69a0b3d39e0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2775&q=80',
-      },
-      {
-        photoId: 6,
-        url: 'https://images.unsplash.com/photo-1527522883525-97119bfce82d?ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80',
-      },
-      {
-        photoId: 4,
-        url: 'https://images.unsplash.com/photo-1556648202-80e751c133da?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80',
-      },
-      {
-        photoId: 5,
-        url: 'https://images.unsplash.com/photo-1532543491484-63e29b3c1f5d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80',
-      },
+        styleId: 2,
+        styleName: 'Desert Brown & Tan',
+        onSale: null,
+        price: 140,
+        skus: [{
+          skusId: 1,
+          size: 'xs',
+          qty: 3,
+        },
+        {
+          skusId: 2,
+          size: 's',
+          qty: 2,
+        },
+        {
+          skusId: 3,
+          size: 'm',
+          qty: 5,
+        },
+        {
+          skusId: 4,
+          size: 'xl',
+          qty: 0,
+        },
+        ],
+        photos: [
+          {
+            photoId: 7,
+            url: 'https://images.unsplash.com/photo-1533779183510-8f55a55f15c1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80',
+          },
+          {
+            photoId: 8,
+            url: 'https://images.unsplash.com/photo-1560567546-4c6dbc16877b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80',
+          },
+          {
+            photoId: 9,
+            url: 'https://images.unsplash.com/photo-1458253329476-1ebb8593a652?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80',
+          },
+          {
+            photoId: 10,
+            url: 'https://images.unsplash.com/photo-1422557379185-474fa15bf770?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80',
 
+          },
+          {
+            photoId: 11,
+            url: 'https://images.unsplash.com/photo-1490723286627-4b66e6b2882a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80',
+
+          },
+          {
+            photoId: 12,
+            url: 'https://images.unsplash.com/photo-1447958272669-9c562446304f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2800&q=80',
+
+          },
+        ],
+      },
+      {
+        styleId: 6,
+        styleName: 'Forest Green & Black',
+        onSale: null,
+        price: 140,
+        skus: [{
+          skusId: 1,
+          size: 'xs',
+          qty: 10,
+        },
+        {
+          skusId: 2,
+          size: 's',
+          qty: 2,
+        },
+        {
+          skusId: 3,
+          size: 'm',
+          qty: 5,
+        },
+        {
+          skusId: 4,
+          size: 'xl',
+          qty: 0,
+        },
+        ],
+        photos: [
+          {
+            photoId: 1,
+            url: 'https://images.unsplash.com/photo-1501088430049-71c79fa3283e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80',
+          },
+          {
+            photoId: 2,
+            url: 'https://images.unsplash.com/photo-1534011546717-407bced4d25c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2734&q=80',
+          },
+          {
+            photoId: 3,
+            url: 'https://images.unsplash.com/photo-1549831243-a69a0b3d39e0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2775&q=80',
+          },
+          {
+            photoId: 6,
+            url: 'https://images.unsplash.com/photo-1527522883525-97119bfce82d?ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80',
+          },
+          {
+            photoId: 4,
+            url: 'https://images.unsplash.com/photo-1556648202-80e751c133da?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80',
+          },
+          {
+            photoId: 5,
+            url: 'https://images.unsplash.com/photo-1532543491484-63e29b3c1f5d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80',
+          },
+        ],
+      },
+      {
+        styleId: 5,
+        styleName: 'Forest Green & Black',
+        onSale: null,
+        price: 140,
+        skus: [{
+          skusId: 1,
+          size: 'xs',
+          qty: 10,
+        },
+        {
+          skusId: 2,
+          size: 's',
+          qty: 2,
+        },
+        {
+          skusId: 3,
+          size: 'm',
+          qty: 5,
+        },
+        {
+          skusId: 4,
+          size: 'xl',
+          qty: 0,
+        },
+        ],
+        photos: [
+          {
+            photoId: 1,
+            url: 'https://images.unsplash.com/photo-1501088430049-71c79fa3283e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80',
+          },
+          {
+            photoId: 2,
+            url: 'https://images.unsplash.com/photo-1534011546717-407bced4d25c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2734&q=80',
+          },
+          {
+            photoId: 3,
+            url: 'https://images.unsplash.com/photo-1549831243-a69a0b3d39e0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2775&q=80',
+          },
+          {
+            photoId: 6,
+            url: 'https://images.unsplash.com/photo-1527522883525-97119bfce82d?ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80',
+          },
+          {
+            photoId: 4,
+            url: 'https://images.unsplash.com/photo-1556648202-80e751c133da?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80',
+          },
+          {
+            photoId: 5,
+            url: 'https://images.unsplash.com/photo-1532543491484-63e29b3c1f5d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80',
+          },
+        ],
+      },
+      {
+        styleId: 4,
+        styleName: 'Forest Green & Black',
+        onSale: null,
+        price: 140,
+        skus: [{
+          skusId: 1,
+          size: 'xs',
+          qty: 10,
+        },
+        {
+          skusId: 2,
+          size: 's',
+          qty: 2,
+        },
+        {
+          skusId: 3,
+          size: 'm',
+          qty: 5,
+        },
+        {
+          skusId: 4,
+          size: 'xl',
+          qty: 0,
+        },
+        ],
+        photos: [
+          {
+            photoId: 1,
+            url: 'https://images.unsplash.com/photo-1501088430049-71c79fa3283e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80',
+          },
+          {
+            photoId: 2,
+            url: 'https://images.unsplash.com/photo-1534011546717-407bced4d25c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2734&q=80',
+          },
+          {
+            photoId: 3,
+            url: 'https://images.unsplash.com/photo-1549831243-a69a0b3d39e0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2775&q=80',
+          },
+          {
+            photoId: 6,
+            url: 'https://images.unsplash.com/photo-1527522883525-97119bfce82d?ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80',
+          },
+          {
+            photoId: 4,
+            url: 'https://images.unsplash.com/photo-1556648202-80e751c133da?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80',
+          },
+          {
+            photoId: 5,
+            url: 'https://images.unsplash.com/photo-1532543491484-63e29b3c1f5d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80',
+          },
+        ],
+      },
+      {
+        styleId: 3,
+        styleName: 'Forest Green & Black',
+        onSale: 100,
+        price: 140,
+        skus: [{
+          skusId: 1,
+          size: 'xs',
+          qty: 10,
+        },
+        {
+          skusId: 2,
+          size: 's',
+          qty: 2,
+        },
+        {
+          skusId: 3,
+          size: 'm',
+          qty: 5,
+        },
+        {
+          skusId: 4,
+          size: 'xl',
+          qty: 0,
+        },
+        ],
+        photos: [
+          {
+            photoId: 1,
+            url: 'https://images.unsplash.com/photo-1501088430049-71c79fa3283e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80',
+          },
+          {
+            photoId: 2,
+            url: 'https://images.unsplash.com/photo-1534011546717-407bced4d25c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2734&q=80',
+          },
+          {
+            photoId: 3,
+            url: 'https://images.unsplash.com/photo-1549831243-a69a0b3d39e0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2775&q=80',
+          },
+          {
+            photoId: 6,
+            url: 'https://images.unsplash.com/photo-1527522883525-97119bfce82d?ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80',
+          },
+          {
+            photoId: 4,
+            url: 'https://images.unsplash.com/photo-1556648202-80e751c133da?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80',
+          },
+          {
+            photoId: 5,
+            url: 'https://images.unsplash.com/photo-1532543491484-63e29b3c1f5d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80',
+          },
+        ],
+      },
     ],
+    relateProduct: [
+      {
+        id: 1,
+        name: 'Camo Onesie',
+        slogan: 'Blend in to your crowd',
+        feature: [{
+          name: 'Fabric',
+          value: 'Canvas',
+        },
+        {
+          name: 'Buttons',
+          value: 'Brass',
+        }],
+        photo: 'https://images.unsplash.com/photo-1533779183510-8f55a55f15c1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80',
+      },
+      {
+        id: 2,
+        name: 'Camo Onesie 2',
+        feature: [{
+          name: 'Fabric',
+          value: 'Canvas',
+        },
+        {
+          name: 'Buttons',
+          value: 'Brass',
+        }],
+        photo: 'https://images.unsplash.com/photo-1533779183510-8f55a55f15c1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80',
+      },
+      {
+        id: 3,
+        name: 'Camo Onesie 3',
+        feature: [{
+          name: 'Fabric',
+          value: 'Canvas',
+        },
+        {
+          name: 'Buttons',
+          value: 'Brass',
+        }],
+        photo: 'https://images.unsplash.com/photo-1533779183510-8f55a55f15c1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80',
+      },
+    ],
+    // photos: [
+    //   {
+    //     photoId: 1,
+    //     url: 'https://images.unsplash.com/photo-1501088430049-71c79fa3283e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80',
+    //   },
+    //   {
+    //     photoId: 2,
+    //     url: 'https://images.unsplash.com/photo-1560567546-4c6dbc16877b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80',
+    //   },
+    //   {
+    //     photoId: 3,
+    //     url: 'https://images.unsplash.com/photo-1458253329476-1ebb8593a652?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80',
+    //   },
+    //   {
+    //     photoId: 6,
+    //     url: 'https://images.unsplash.com/photo-1422557379185-474fa15bf770?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80',
 
+    //   },
+    //   {
+    //     photoId: 4,
+    //     url: 'https://images.unsplash.com/photo-1490723286627-4b66e6b2882a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80',
+
+    //   },
+    //   {
+    //     photoId: 5,
+    //     url: 'https://images.unsplash.com/photo-1447958272669-9c562446304f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2800&q=80',
+
+    //   },
+    // ],
   },
   {
     id: 2,

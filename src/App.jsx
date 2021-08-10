@@ -14,8 +14,10 @@ const App = () => (
     <AppContainer>
       <Router>
         <NavSideBar />
-        <NavTopBar />
-        <Routes />
+        <div>
+          <NavTopBar />
+          <Routes />
+        </div>
       </Router>
     </AppContainer>
   </Provider>

@@ -1,8 +1,12 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
 
 import imgSize from '../../Function/imgSize';
+import {
+  ProductIdSelected,
+} from '../../../Redux';
 
 import {
   CategoryBoxContainer,
@@ -16,10 +20,17 @@ const CategoryBoxSingle = (props) => {
     name, photo, category, id,
   } = props;
   const history = useHistory();
+  const dispatch = useDispatch();
+  let url;
+  if (photo) {
+    url = imgSize(photo, 200);
+  } else {
+    url = './icon/no.jpeg';
+  }
 
   const handleClicked = () => {
     history.push('/product');
-    console.log('id need to add to redux');
+    dispatch(ProductIdSelected(id));
   };
 
   return (
@@ -28,7 +39,12 @@ const CategoryBoxSingle = (props) => {
         {category}
       </CategoryTopContainer>
       <CategoryMiddleContainer>
-        <img src={imgSize(photo, 200)} alt="img" />
+        <img
+          src={url}
+          width="200"
+          height="200"
+          alt="img"
+        />
       </CategoryMiddleContainer>
       <CategoryBoxButton
         type="button"

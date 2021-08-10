@@ -1,17 +1,20 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
 import ProductImage from './ProductImage/ProductImage';
+import ProductInfo from './ProductInfo/ProductInfo';
 
 import {
   ProductDetailContainer,
 } from '../ProductStyle';
 
-const ProductDetail = (props) => {
-  const {} = props;
+const ProductDetail = () => {
+  const width = useSelector((state) => state.window.windowWidth);
+
   return (
-    <ProductDetailContainer>
-      <ProductImage />
-      <div>joasdasdasdsa</div>
+    <ProductDetailContainer isRow={width > 700}>
+      <ProductImage isRow={width > 700} />
+      <ProductInfo isRow={width > 700} />
     </ProductDetailContainer>
   );
 };

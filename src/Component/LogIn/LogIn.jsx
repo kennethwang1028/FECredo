@@ -16,6 +16,7 @@ import {
 
 const LogIn = () => {
   const isIconListClicked = useSelector((state) => state.sideBar.isIconListClicked);
+  const width = useSelector((state) => state.window.windowWidth);
   const dispatch = useDispatch();
 
   const [email, seteEmail] = useState('');
@@ -39,7 +40,7 @@ const LogIn = () => {
   };
 
   return (
-    <LogInContainer style={isIconListClicked ? { paddingLeft: '250px' } : null}>
+    <LogInContainer width={width}>
       <SignInContainer>
         <SignInText>Sign-In</SignInText>
         <InputText

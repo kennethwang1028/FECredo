@@ -3,17 +3,18 @@ import { NavLink as Link } from 'react-router-dom';
 
 export const AppContainer = styled.div`
   margin: -8px;
-  font-size: 4vw;
+  font-size: 16px;
   background-color:black;
-  min-width: 500px;
   overflow:auto;
+  position:relative;
+  display:flex;
+  flex-direction: row;
+  justify-content: flex-end;
 `;
 
 export const SideBarContainer = styled.div`
   background: #edf2f5;
-  width: ${(props) => (props.isIconListClicked ? '30vw' : '10vw')};
-  max-width:${(props) => (props.isIconListClicked ? '30vw' : '80px')};
-  min-width: ${(props) => (props.isIconListClicked ? '100px' : '50px')};
+  width: ${(props) => (props.width)}px;
   height:100vh;
   display: flex;
   flex-direction: column;
@@ -21,45 +22,34 @@ export const SideBarContainer = styled.div`
   align-items: flex-start;
   padding-top: 1vw;
   padding-left: 1vw;
+  left:0;
   position: fixed;
+  overflow:hidden;
 `;
 
 export const TopBarContainer = styled.div`
   background: #edf2f5;
+  width: ${(props) => (props.width - 15)}px;
   height: 10vw;
   max-height: 85px;
   min-height: 50px;
   display: flex;
-  padding-left:${(props) => {
-    if (props.width < 500) {
-      return '50px;';
-    } if (props.isIconListClicked) {
-      return '31vw;';
-    }
-    return '11vw;';
-  }}
   justify-content: space-between;
-  padding-right: 2vw;
   align-items: center;
+  top:0;
+  position: relative;
+  padding-right: 1vw;
+  overflow:hidden;
 `;
 
 export const RoutesContainer = styled.div`
-  background: red;
+  background: #edf2f5;
+  width: ${(props) => (props.width - 15)}px;
   display: flex;
-  padding-left:${(props) => {
-    if (props.width < 500) {
-      return '50px;';
-    } if (props.width >= 500 && props.width <= 800) {
-      return '11vw;';
-    }
-    if (props.isIconListClicked) {
-      return '31vw;';
-    }
-    return '7vw;';
-  }}
-  justify-content: space-between;
-  padding-right: 2vw;
   align-items: center;
+  position: relative;
+  padding-right: 1vw;
+  // overflow:hidden;
 `;
 
 export const NavLink = styled(Link)`

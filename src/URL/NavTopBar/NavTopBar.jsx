@@ -13,12 +13,12 @@ import {
 
 const NavTopBar = () => {
   const isIconListClicked = useSelector((state) => state.sideBar.isIconListClicked);
+  const width1 = useSelector((state) => state.window.windowWidth);
   const { width } = useWindowDimensions();
-
   return (
     <TopBarContainer
-      isIconListClicked={isIconListClicked}
-      width={width}
+      // isIconListClicked={isIconListClicked}
+      width={width1}
     >
       <Monkey />
       {width < 900 || isIconListClicked ? null : <NavInputText />}
