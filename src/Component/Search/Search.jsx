@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import {
   useSelector,
   useDispatch,
@@ -10,27 +10,33 @@ import {
 
 import {
   SearchContainer,
+  Container,
 } from './SearchStyle';
 
 import SearchCategoryTop from './SearchCategoryTop/SearchCategoryTop';
-import SearchCategoryData from './CategoryData';
+
+import categoryData from './CategoryData';
+import featureData from './FeatureData';
 // fetch catrgory type list;
 
 const Search = () => {
   const { categoryId } = useParams();
   const id = categoryId || 0;
 
-  const searchCategoryData = SearchCategoryData.SearchCategoryData;
-  const isIconListClicked = useSelector((state) => state.sideBar.isIconListClicked);
+  const width = useSelector((state) => state.window.windowWidth);
+
+  useEffect(() => {
+
+  }, []);
 
   return (
-    <SearchContainer
-      extent={isIconListClicked}
+    <Container
+      width={width}
     >
       <SearchCategoryTop
-        searchCategoryData={searchCategoryData}
+        categoryData={categoryData}
       />
-    </SearchContainer>
+    </Container>
   );
 };
 

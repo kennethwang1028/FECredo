@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 export const LogInContainer = styled.div`
-  height:100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -22,7 +21,7 @@ export const SignInContainer = styled.div`
   justify-content: space-between;
   border-radius: 5px;
   padding: 15px;
-  font-size: 40%;
+  font-size: 2vw;
   color: black;
   white-space: initial;
   margin: 20px;

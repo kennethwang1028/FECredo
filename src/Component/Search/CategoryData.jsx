@@ -1,109 +1,104 @@
-const SearchCategoryData = [
+const categoryData = [
   {
-    id: 1,
-    category: 'Jackets',
-    feature: [
-      {
-        id: 10,
-        name: 'Fabric',
-        value: [
-          {
-            id: 100,
-            name: 'Canvas',
-          }, {
-            id: 101,
-            name: '100% Cotton',
-          }, {
-            id: 102,
-            name: '99% Cotton 1% Elastic',
-          },
-        ],
-      },
-      {
-        id: 11,
-        name: 'Buttons',
-        value: [
-          {
-            id: 103,
-            name: 'Brass',
-          },
-        ],
-      },
-    ],
+    categoryId: 1,
+    categoryName: 'Jacket',
   },
   {
-    id: 2,
-    category: 'Accessories',
-    feature: [
-      {
-        id: 12,
-        name: 'Lenses',
-        value: [
-          {
-            id: 104,
-            name: 'Ultrasheen',
-          },
-        ],
-      },
-      {
-        id: 13,
-        name: 'UV Protection',
-        value: [
-          {
-            id: 105,
-            name: null,
-          },
-        ],
-      },
-      {
-        id: 14,
-        name: 'Frames',
-        value: [
-          {
-            id: 106,
-            name: 'LightCompose',
-          },
-        ],
-      },
-    ],
+    categoryId: 2,
+    categoryName: 'Accessories',
   },
   {
-    id: 4,
-    category: 'Pants',
-    feature: [
-      {
-        id: 10,
-        name: 'Fabric',
-        value: [
-          {
-            id: 100,
-            name: 'Canvas',
-          }, {
-            id: 101,
-            name: '100% Cotton',
-          }, {
-            id: 102,
-            name: '99% Cotton 1% Elastic',
-          },
-        ],
-      },
-      {
-        id: 15,
-        name: 'Cut',
-        value: [
-          {
-            id: 110,
-            name: 'Skinny',
-          },
-          {
-            id: 110,
-            name: 'Loose',
-          },
-        ],
-      }],
+    categoryId: 3,
+    categoryName: 'Pants',
+  },
+  {
+    categoryId: 4,
+    categoryName: 'Kicks',
+  },
+  {
+    categoryId: 5,
+    categoryName: 'shoes',
+  },
+  {
+    categoryId: 6,
+    categoryName: 'Shirt',
+  },
+  {
+    categoryId: 7,
+    categoryName: 'Dress',
+  },
+  {
+    categoryId: 8,
+    categoryName: 'Shorts',
+  },
+  {
+    categoryId: 9,
+    categoryName: 'Sunglasses',
+  },
+  {
+    categoryId: 10,
+    categoryName: 'Socks',
+  },
+  {
+    categoryId: 11,
+    categoryName: 'Coat',
+  },
+  {
+    categoryId: 12,
+    categoryName: 'Tank Top',
+  },
+  {
+    categoryId: 13,
+    categoryName: 'Boots',
+  },
+  {
+    categoryId: 14,
+    categoryName: 'Skirt',
+  },
+  {
+    categoryId: 15,
+    categoryName: 'Trousers',
+  },
+  {
+    categoryId: 16,
+    categoryName: 'Sweatpants',
+  },
+  {
+    categoryId: 17,
+    categoryName: 'Hat',
+  },
+  {
+    categoryId: 18,
+    categoryName: 'Backpack',
+  },
+  {
+    categoryId: 19,
+    categoryName: 'Romper',
+  },
+  {
+    categoryId: 20,
+    categoryName: 'Cap',
+  },
+  {
+    categoryId: 21,
+    categoryName: 'Hoodie',
+  },
+  {
+    categoryId: 22,
+    categoryName: 'Slacks',
+  },
+  {
+    categoryId: 23,
+    categoryName: 'Sweater',
+  },
+  {
+    categoryId: 24,
+    categoryName: 'Suit',
+  },
+  {
+    categoryId: 25,
+    categoryName: 'Heels',
   },
 ];
 
-export default {
-  SearchCategoryData,
-};
+export default categoryData;

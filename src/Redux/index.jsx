@@ -24,3 +24,11 @@ export {
   ProductMainStyleSelected,
   ProductIdSelected,
 } from './Product/ProductAction';
+
+export {
+  CategorysListEnter,
+  CategoryMainSelected,
+  FeaturesListEnter,
+  FeatureMainSelected,
+  SearchTextEnter,
+} from './Search/SearchAction';
