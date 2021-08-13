@@ -3,3 +3,4 @@ export const CategoryMain = 'Category-Main';
 export const FeaturesList = 'Features-List';
 export const FeatureMain = 'Feature-Main';
 export const SearchText = 'Search-Text';
+export const ProductsList = 'Products-List';

@@ -4,6 +4,7 @@ import {
   FeaturesList,
   FeatureMain,
   SearchText,
+  ProductsList,
 } from './SearchType';
 
 const initState = {
@@ -12,6 +13,7 @@ const initState = {
   featuresList: [],
   featureMain: '', // need to change to id number;
   searchText: '',
+  productsList: [],
 };
 
 const searchReducer = (state = initState, action) => {
@@ -36,7 +38,10 @@ const searchReducer = (state = initState, action) => {
       ...state,
       searchText: action.payload,
     };
-
+    case ProductsList: return {
+      ...state,
+      productsList: action.payload,
+    };
     default: return state;
   }
 };

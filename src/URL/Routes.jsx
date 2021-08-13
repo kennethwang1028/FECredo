@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import axios from 'axios';
 
 import Home from '../Component/Home/Home';
 import Search from '../Component/Search/Search';
@@ -8,11 +9,31 @@ import LogIn from '../Component/LogIn/LogIn';
 import SignUp from '../Component/LogIn/SignUp';
 import Product from '../Component/Product/Product';
 
+import {
+  CategoriesListEnter,
+  FeaturesListEnter,
+} from '../Redux';
+
 import { RoutesContainer } from '../Styles';
 
 const Routes = () => {
   const isIconListClicked = useSelector((state) => state.sideBar.isIconListClicked);
   const width = useSelector((state) => state.window.windowWidth);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    axios('http://localhost:3001/SDCredo/Categories')
+      .then((data) => {
+        dispatch(CategoriesListEnter(data.data));
+      })
+      .catch((err) => console.log(err));
+    axios('http://localhost:3001/SDCredo/Features')
+      .then((data) => {
+        dispatch(FeaturesListEnter(data.data));
+      })
+      .catch((err) => console.log(err));
+    console.error('Routes');
+  }, []);
   return (
     <RoutesContainer
       isIconListClicked={isIconListClicked}

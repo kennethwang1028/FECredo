@@ -3,17 +3,24 @@ import {
   useSelector,
   useDispatch,
 } from 'react-redux';
-
 import {
   useParams,
 } from 'react-router-dom';
+
+import {
+  CategorysListEnter,
+  CategoryMainSelected,
+  FeaturesListEnter,
+  FeatureMainSelected,
+  SearchTextEnter,
+} from '../../Redux';
 
 import {
   SearchContainer,
   Container,
 } from './SearchStyle';
 
-import SearchCategoryTop from './SearchCategoryTop/SearchCategoryTop';
+import SearchBar from './SearchBar/SearchBar';
 
 import categoryData from './CategoryData';
 import featureData from './FeatureData';
@@ -24,18 +31,19 @@ const Search = () => {
   const id = categoryId || 0;
 
   const width = useSelector((state) => state.window.windowWidth);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-
+    dispatch(CategorysListEnter(categoryData));
+    dispatch(FeaturesListEnter(featureData));
   }, []);
 
   return (
     <Container
       width={width}
     >
-      <SearchCategoryTop
-        categoryData={categoryData}
-      />
+      <SearchBar />
+      hi
     </Container>
   );
 };

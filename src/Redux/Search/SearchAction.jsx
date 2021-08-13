@@ -4,6 +4,7 @@ import {
   FeaturesList,
   FeatureMain,
   SearchText,
+  ProductsList,
 } from './SearchType';
 
 export const CategorysListEnter = (categoryList = []) => ({
@@ -29,4 +30,9 @@ export const FeatureMainSelected = (featureName = '') => ({
 export const SearchTextEnter = (textSearch = '') => ({
   type: SearchText,
   payload: textSearch,
+});
+
+export const ProductsListEnter = (productsList = []) => ({
+  type: ProductsList,
+  payload: productsList,
 });

@@ -13,10 +13,9 @@ export {
 } from './User/UserAction';
 
 export {
-  CategoryIdSelected,
-  CategoryNameSelected,
-  CategoryTextSearch,
-} from './Category/CategoryAction';
+  CategoriesListEnter,
+  FeaturesListEnter,
+} from './BasicInfo/BasicInfoAction';
 
 export {
   ProductEnter,
@@ -28,7 +27,8 @@ export {
 export {
   CategorysListEnter,
   CategoryMainSelected,
-  FeaturesListEnter,
+  // FeaturesListEnter,
   FeatureMainSelected,
   SearchTextEnter,
+  ProductsListEnter,
 } from './Search/SearchAction';

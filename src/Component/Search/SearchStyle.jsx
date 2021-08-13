@@ -2,8 +2,16 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   width:  ${(props) => (props.width - 15)}px;
+  padding-top:2vw;
   overflow:auto;
   position:relative;
+  background-color:white;
+  color:black;
+  position:relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const SearchContainer = styled.div`
@@ -22,6 +30,8 @@ export const SearchCategoryBox = styled.div`
   display: flex;
   flex-direction: row;
   padding:1vw;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const SearchCategoryInput = styled.input`
@@ -36,3 +46,9 @@ export const SearchCategoryButton = styled.button`
   border-radius:0% 10px 10px 0%;
   margin-left:0.5vw;
 `;
+
+export const SearchSelect = styled.select`
+  font-size: 3vw;
+  display: flex;
+`;
+
