@@ -1,6 +1,9 @@
 export {
-  windowHeightSet,
-  windowWidthSet,
+  SetCountWindowHeight,
+  SetCountWindowWidth,
+  SetCountSideBarWidth,
+  SetCountInfoWidth,
+  SetIsSideBarClicked,
 } from './Window/WindowAction';
 
 export { ListClicked } from './SideBar/SideBarAction';
@@ -13,8 +16,8 @@ export {
 } from './User/UserAction';
 
 export {
-  CategoriesListEnter,
-  FeaturesListEnter,
+  SetCategoriesList,
+  SetFeaturesList,
 } from './BasicInfo/BasicInfoAction';
 
 export {
@@ -25,10 +28,10 @@ export {
 } from './Product/ProductAction';
 
 export {
-  CategorysListEnter,
   CategoryMainSelected,
-  // FeaturesListEnter,
-  FeatureMainSelected,
+  FeatureValuesListSelected,
   SearchTextEnter,
   ProductsListEnter,
+  ProductsListLengthEnter,
+  SearchPageEnter,
 } from './Search/SearchAction';

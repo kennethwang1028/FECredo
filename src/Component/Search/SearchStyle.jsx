@@ -52,3 +52,7 @@ export const SearchSelect = styled.select`
   display: flex;
 `;
 
+export const FeaturesListContainer = styled.div`
+
+
+`;

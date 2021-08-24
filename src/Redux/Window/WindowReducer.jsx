@@ -1,22 +1,40 @@
 import {
-  windowHeight,
-  windowWidth,
+  countWindowHeight,
+  countWindowWidth,
+  countSideBarWidth,
+  countInfoWidth,
+  isSideBarClicked,
 } from './WindowType';
 
 const initState = {
-  windowHeight: 0,
-  windowWidth: 0,
+  countWindowHeight: 0,
+  countWindowWidth: 0,
+  countSideBarWidth: 0,
+  countInfoWidth: 0,
+  isSideBarClicked: false,
 };
 
 const windowReducer = (state = initState, action) => {
   switch (action.type) {
-    case windowHeight: return {
+    case countWindowHeight: return {
       ...state,
-      windowHeight: action.payload,
+      countWindowHeight: action.payload,
     };
-    case windowWidth: return {
+    case countWindowWidth: return {
       ...state,
-      windowWidth: action.payload,
+      countWindowWidth: action.payload,
+    };
+    case countSideBarWidth: return {
+      ...state,
+      countSideBarWidth: action.payload,
+    };
+    case countInfoWidth: return {
+      ...state,
+      countInfoWidth: action.payload,
+    };
+    case isSideBarClicked: return {
+      ...state,
+      isSideBarClicked: !state.isSideBarClicked,
     };
     default: return state;
   }

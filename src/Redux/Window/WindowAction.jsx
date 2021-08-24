@@ -1,14 +1,31 @@
 import {
-  windowHeight,
-  windowWidth,
+  countWindowHeight,
+  countWindowWidth,
+  countSideBarWidth,
+  countInfoWidth,
+  isSideBarClicked,
 } from './WindowType';
 
-export const windowHeightSet = (height = 0) => ({
-  type: windowHeight,
+export const SetCountWindowHeight = (height = 0) => ({
+  type: countWindowHeight,
   payload: height,
 });
 
-export const windowWidthSet = (width = 0) => ({
-  type: windowWidth,
+export const SetCountWindowWidth = (width = 0) => ({
+  type: countWindowWidth,
   payload: width,
+});
+
+export const SetCountSideBarWidth = (width = 0) => ({
+  type: countSideBarWidth,
+  payload: width,
+});
+
+export const SetCountInfoWidth = (width = 0) => ({
+  type: countInfoWidth,
+  payload: width,
+});
+
+export const SetIsSideBarClicked = () => ({
+  type: isSideBarClicked,
 });

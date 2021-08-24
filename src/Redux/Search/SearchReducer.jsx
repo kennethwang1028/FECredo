@@ -1,38 +1,30 @@
 import {
-  CategorysList,
   CategoryMain,
-  FeaturesList,
-  FeatureMain,
+  FeatureValuesList,
   SearchText,
   ProductsList,
+  ProductsListLength,
+  SearchPage,
 } from './SearchType';
 
 const initState = {
-  categorysList: [],
-  categoryMain: '', // need to change to id number;
-  featuresList: [],
-  featureMain: '', // need to change to id number;
+  categoryMain: 0,
+  featureValuesList: [],
   searchText: '',
   productsList: [],
+  productsListLength: 0,
+  searchPage: 1,
 };
 
 const searchReducer = (state = initState, action) => {
   switch (action.type) {
-    case CategorysList: return {
-      ...state,
-      categorysList: action.payload,
-    };
     case CategoryMain: return {
       ...state,
       categoryMain: action.payload,
     };
-    case FeaturesList: return {
+    case FeatureValuesList: return {
       ...state,
-      featuresList: action.payload,
-    };
-    case FeatureMain: return {
-      ...state,
-      featureMain: action.payload,
+      featureValuesList: action.payload,
     };
     case SearchText: return {
       ...state,
@@ -41,6 +33,14 @@ const searchReducer = (state = initState, action) => {
     case ProductsList: return {
       ...state,
       productsList: action.payload,
+    };
+    case ProductsListLength: return {
+      ...state,
+      productsListLength: action.payload,
+    };
+    case SearchPage: return {
+      ...state,
+      searchPage: action.payload,
     };
     default: return state;
   }

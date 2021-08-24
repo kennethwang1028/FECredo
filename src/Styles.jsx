@@ -1,58 +1,75 @@
 import styled from 'styled-components';
 import { NavLink as Link } from 'react-router-dom';
 
-export const AppContainer = styled.div`
-  margin: -8px;
-  font-size: 16px;
-  background-color:black;
-  overflow:auto;
-  position:relative;
+export const AppContainerStyle = styled.div`
+  // margin: -8px;
+  // font-size: 16px;
+  // background-color:black;
+  // overflow:auto;
+  // position:relative;
+  // display:flex;
+  // flex-direction: row;
+  // justify-content: flex-end;
+  background-color:yellow;
+  width:100vw;
+  margin:-8px;
   display:flex;
   flex-direction: row;
   justify-content: flex-end;
 `;
 
-export const SideBarContainer = styled.div`
+export const NavSideBarContainerStyle = styled.div`
   background: #edf2f5;
   width: ${(props) => (props.width)}px;
   height:100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  padding-top: 1vw;
-  padding-left: 1vw;
+  position:fixed;
+  display:flex;
+  justify-content: space-evenly;
   left:0;
-  position: fixed;
-  overflow:hidden;
 `;
 
-export const TopBarContainer = styled.div`
-  background: #edf2f5;
-  width: ${(props) => (props.width - 15)}px;
+export const NavInfoContainerStyle = styled.div`
+  background: red;
+  width: ${(props) => (props.width)}px;
+`;
+
+export const SideBarListContainerStyle = styled.div`
   height: 10vw;
   max-height: 85px;
-  min-height: 50px;
+  min-height: 60px;
+  display:flex;
+  align-items: center;
+  ${(props) => (props.isSideBarClicked
+    ? null
+    : `
+    justify-content: center;
+    `)}
+`;
+
+export const TopBarContainerStyle = styled.div`
+  background: #edf2f5;
+  height: 10vw;
+  max-height: 85px;
+  min-height: 60px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   top:0;
   position: relative;
   padding-right: 1vw;
-  overflow:hidden;
 `;
 
-export const RoutesContainer = styled.div`
-  background: #edf2f5;
-  width: ${(props) => (props.width - 15)}px;
-  display: flex;
-  align-items: center;
-  position: relative;
-  padding-right: 1vw;
-  // overflow:hidden;
+export const RoutesContainerStyle = styled.div`
+  // background: #edf2f5;
+  // width: ${(props) => (props.width - 15)}px;
+  // display: flex;
+  // align-items: center;
+  // position: relative;
+  // padding-right: 1vw;
+  // // overflow:hidden;
 `;
 
-export const NavLink = styled(Link)`
+export const NavLinkStyle = styled(Link)`
   display: flex;
   font-size:4vw;
   align-items: center;
@@ -62,11 +79,7 @@ export const NavLink = styled(Link)`
   text-decoration: none !important;
 `;
 
-export const NavIcon = styled.img`
-  width: 6vw;
-  height: auto;
-  max-width: 50px;
-  min-width: 30px;
+export const NavIconStyle = styled.img`
   border: 2px solid black;
   border-radius : 5px;
   padding: 5px;
@@ -76,7 +89,7 @@ export const NavIcon = styled.img`
   }
 `;
 
-export const NavText = styled.div`
+export const NavTextStyle = styled.div`
   margin-left:1vw;
   color:black;
   text-decoration: black wavy underline;

@@ -1,6 +1,6 @@
 const numberofIcon = (w, h, n) => {
   if (w <= 500) {
-    const n1 = Math.floor(h / 50) - 3;
+    const n1 = Math.floor(h / 40) - 3;
     if (n1 >= n) {
       return n;
     }

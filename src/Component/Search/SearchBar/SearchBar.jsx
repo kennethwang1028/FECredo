@@ -1,14 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 
 import {
-  CategorysListEnter,
   CategoryMainSelected,
-  FeaturesListEnter,
-  FeatureMainSelected,
   SearchTextEnter,
+  SearchPageEnter,
   ProductsListEnter,
+  ProductsListLengthEnter,
 } from '../../../Redux';
 
 import {
@@ -21,13 +20,17 @@ import {
 const SearchBar = () => {
   const dispatch = useDispatch();
 
-  const categorysList = useSelector((state) => state.search.categorysList);
-  const categoryMain = useSelector((state) => state.search.categoryMain);
-  const searchText = useSelector((state) => state.search.searchText);
+  const categoriesList = useSelector((state) => state.basicInfo.categoriesList);
+  const {
+    categoryMain,
+    searchText,
+    featureValuesList,
+  } = useSelector((state) => state.search);
 
   const handleChangeSelect = (event) => {
-    // const index = event.target.selectedIndex;
-    dispatch(CategoryMainSelected(event.target.value));
+    const index = event.target.selectedIndex;
+    const id = categoriesList[index].categoryid;
+    dispatch(CategoryMainSelected(id));
     dispatch(SearchTextEnter(''));
   };
 
@@ -37,17 +40,26 @@ const SearchBar = () => {
   };
 
   const handleClicked = () => {
-    let url;
-    if (categoryMain !== '' && searchText.length <= 3) {
-      url = `http://localhost:3001/category/${categoryMain}`;
-    } else if (categoryMain !== '' && searchText.length > 3) {
-      url = `http://localhost:3001/category/${categoryMain}/${searchText}`;
-    }
+    const url1 = 'http://localhost:3001/SDCredo/searchLength';
+    const url2 = 'http://localhost:3001/SDCredo/search';
+    let url = `?categoryId=${categoryMain}&start=0`;
 
-    axios(url)
+    if (searchText.length <= 3) {
+      url += `&searchText=${searchText}`;
+    }
+    if (featureValuesList.length > 0) {
+      url += `&featuresList=[${featureValuesList}]`;
+    }
+    axios(url2 + url)
       .then((res) => {
-        const { productslist } = res.data;
-        dispatch(ProductsListEnter(productslist));
+        dispatch(ProductsListEnter(res.data));
+      })
+      .catch((err) => console.log(err));
+    axios(url1 + url)
+      .then((res) => {
+        const len = res.data[0].count;
+        dispatch(ProductsListLengthEnter(len));
+        dispatch(SearchPageEnter(1));
       })
       .catch((err) => console.log(err));
   };
@@ -57,10 +69,9 @@ const SearchBar = () => {
       <SearchSelect
         onChange={handleChangeSelect}
       >
-        <option>All</option>
-        {categorysList.map((i) => (
-          <option key={i.categoryId}>
-            {i.categoryName}
+        {categoriesList.map((i) => (
+          <option key={i.categoryid}>
+            {i.categoryname}
           </option>
         ))}
       </SearchSelect>

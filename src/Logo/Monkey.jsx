@@ -163,16 +163,20 @@ const Monkey14 = styled.div`
   z-index: 24;
 `;
 
-const Monkey15 = styled.div`
-  width: 45%;
-  height: 20%;
-  top: 65%;
-  left: 30%;
-  position: absolute;
-  background-color: red;
-  clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
-  z-index: 24;
-`;
+// const Monkey15 = styled.div`
+//   width: 45%;
+//   height: 20%;
+//   top: 65%;
+//   left: 30%;
+//   position: absolute;
+//   background-color: red;
+//   clip-path: polygon(
+//     20% 0%, 0% 20%, 30% 50%,
+//     0% 80%, 20% 100%, 50% 70%,
+//     80% 100%, 100% 80%, 70% 50%,
+//     100% 20%, 80% 0%, 50% 30%);
+//   z-index: 24;
+// `;
 
 const Monkey16 = styled.div`
   width: 10%;
@@ -262,11 +266,11 @@ const Monkey23 = styled.div`
   clip-path: ellipse(37% 40% at 50% 50%);
 `;
 
-const Monkey24 = styled.div`
-  width: 260px;
-  height: 260px;
-  position: relative;
-`;
+// const Monkey24 = styled.div`
+//   width: 260px;
+//   height: 260px;
+//   position: relative;
+// `;
 
 const Monkey = () => (
   <Monkey0>

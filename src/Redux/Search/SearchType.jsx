@@ -1,6 +1,6 @@
-export const CategorysList = 'Categorys-List';
 export const CategoryMain = 'Category-Main';
-export const FeaturesList = 'Features-List';
-export const FeatureMain = 'Feature-Main';
+export const FeatureValuesList = 'Feature-Values-List';
 export const SearchText = 'Search-Text';
 export const ProductsList = 'Products-List';
+export const ProductsListLength = 'Products-List-Length';
+export const SearchPage = 'Search-Page';

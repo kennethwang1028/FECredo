@@ -3,12 +3,12 @@ import {
   FeaturesList,
 } from './BasicInfoType';
 
-export const CategoriesListEnter = (categoriesList = []) => ({
+export const SetCategoriesList = (categoriesList = []) => ({
   type: CategoriesList,
   payload: categoriesList,
 });
 
-export const FeaturesListEnter = (featuresList = []) => ({
+export const SetFeaturesList = (featuresList = []) => ({
   type: FeaturesList,
   payload: featuresList,
 });
