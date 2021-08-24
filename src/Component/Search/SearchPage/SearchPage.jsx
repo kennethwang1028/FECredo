@@ -6,13 +6,18 @@ import {
   ProductsListEnter,
 } from '../../../Redux';
 
+import {
+  RowContainerStyle,
+  SearchPageButtonStyle,
+} from '../SearchStyle';
+
 const SearchPage = () => {
   const {
     searchPage,
     productsListLength,
     categoryMain,
     searchText,
-    featureValuesList,
+    featureValuesSelectedList,
   } = useSelector((state) => state.search);
 
   const dispatch = useDispatch();
@@ -29,8 +34,8 @@ const SearchPage = () => {
     if (searchText.length <= 3) {
       url += `&searchText=${searchText}`;
     }
-    if (featureValuesList.length > 0) {
-      url += `&featuresList=[${featureValuesList}]`;
+    if (featureValuesSelectedList.length > 0) {
+      url += `&featuresList=[${featureValuesSelectedList}]`;
     }
     axios(url1 + url)
       .then((res) => {
@@ -58,42 +63,43 @@ const SearchPage = () => {
   };
 
   const button = (num) => (
-    <button
+    <SearchPageButtonStyle
       key={num}
+      pageSelected={num === searchPage}
       type="button"
       id={num}
       onClick={handleClickedPage}
     >
       {num}
-    </button>
+    </SearchPageButtonStyle>
   );
 
   const pageList = (page, ManyPages) => {
     if (ManyPages <= 7) {
       return (
-        <div>
+        <RowContainerStyle>
           {[...Array(ManyPages)].map((i, index) => {
             const num = index + 1;
             return button(num);
           })}
-        </div>
+        </RowContainerStyle>
       );
     }
     if (page <= 5) {
       return (
-        <div>
+        <RowContainerStyle>
           {[...Array(5)].map((i, index) => {
             const num = index + 1;
             return button(num);
           })}
           <div>...</div>
           {button(ManyPages)}
-        </div>
+        </RowContainerStyle>
       );
     }
     if (page > 5 && page + 4 <= ManyPages) {
       return (
-        <div>
+        <RowContainerStyle>
           {button(1)}
           <div>...</div>
           {[...Array(3)].map((i, index) => {
@@ -102,48 +108,52 @@ const SearchPage = () => {
           })}
           <div>...</div>
           {button(ManyPages)}
-        </div>
+        </RowContainerStyle>
       );
     }
     if (page + 4 > ManyPages) {
       return (
-        <div>
+        <RowContainerStyle>
           {button(1)}
           <div>...</div>
           {[...Array(5)].map((i, index) => {
             const num = ManyPages - 4 + index;
             return button(num);
           })}
-        </div>
+        </RowContainerStyle>
       );
     }
     return null;
   };
 
   return (
-    <div>
+    <RowContainerStyle>
       {searchPage === 1
         ? null
         : (
-          <button
-            type="button"
-            onClick={handleClickedPrev}
-          >
-            Prev
-          </button>
+          <RowContainerStyle>
+            <SearchPageButtonStyle
+              type="button"
+              onClick={handleClickedPrev}
+            >
+              Prev
+            </SearchPageButtonStyle>
+          </RowContainerStyle>
         )}
       {pageList(searchPage, howManyPages)}
       {searchPage >= howManyPages
         ? null
         : (
-          <button
-            type="button"
-            onClick={handleClickedNext}
-          >
-            Next
-          </button>
+          <RowContainerStyle>
+            <SearchPageButtonStyle
+              type="button"
+              onClick={handleClickedNext}
+            >
+              Next
+            </SearchPageButtonStyle>
+          </RowContainerStyle>
         )}
-    </div>
+    </RowContainerStyle>
   );
 };
 

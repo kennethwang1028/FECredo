@@ -31,6 +31,8 @@ export const NavSideBarContainerStyle = styled.div`
 export const NavInfoContainerStyle = styled.div`
   background: red;
   width: ${(props) => (props.width)}px;
+  display:flex;
+  flex-direction:column;
 `;
 
 export const SideBarListContainerStyle = styled.div`
@@ -56,17 +58,10 @@ export const TopBarContainerStyle = styled.div`
   align-items: center;
   top:0;
   position: relative;
-  padding-right: 1vw;
+  padding-right: 2vw;
 `;
 
 export const RoutesContainerStyle = styled.div`
-  // background: #edf2f5;
-  // width: ${(props) => (props.width - 15)}px;
-  // display: flex;
-  // align-items: center;
-  // position: relative;
-  // padding-right: 1vw;
-  // // overflow:hidden;
 `;
 
 export const NavLinkStyle = styled(Link)`

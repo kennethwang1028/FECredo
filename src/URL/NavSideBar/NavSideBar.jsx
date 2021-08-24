@@ -52,7 +52,7 @@ const NavSideBar = () => {
         />
       </SideBarListContainerStyle>
       {[...Array(numberofIcons)].map((i, index) => (
-        <div key={i}>
+        <div key={iconArray[index]}>
           <NavLinkStyle to={`/${iconArray[index]}`}>
             <NavIconStyle
               alt={iconArray[index]}

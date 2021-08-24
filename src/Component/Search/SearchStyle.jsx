@@ -1,17 +1,43 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
-  width:  ${(props) => (props.width - 15)}px;
+export const ContainerStyle = styled.div`
+  width:200px;
+  padding:5px;
+  margin:5px;
+  border-radius:10px
+`;
+
+export const ColumnContainerStyle = styled.div`
   padding-top:2vw;
   overflow:auto;
   position:relative;
   background-color:white;
   color:black;
-  position:relative;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+`;
+
+export const RowContainerStyle = styled.div`
+  padding-top:1vw;
+  color:black;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+`;
+
+export const SearchPageButtonStyle = styled.button`
+  background-color:${(props) => (props.pageSelected ? '#a5aaad' : 'white')};
+  font-size:2vw;
+  font-size: 16px;
+  margin:0.5vw;
+  border-radius: 5px;
+  &:hover {
+    background-color:#a5aaad;
+  }
+  &:active {
+    color:white;
+  }
 `;
 
 export const SearchContainer = styled.div`
@@ -50,9 +76,4 @@ export const SearchCategoryButton = styled.button`
 export const SearchSelect = styled.select`
   font-size: 3vw;
   display: flex;
-`;
-
-export const FeaturesListContainer = styled.div`
-
-
 `;

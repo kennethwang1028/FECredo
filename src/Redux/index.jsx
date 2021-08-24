@@ -6,8 +6,6 @@ export {
   SetIsSideBarClicked,
 } from './Window/WindowAction';
 
-export { ListClicked } from './SideBar/SideBarAction';
-
 export {
   userNameEnter,
   userEmailEnter,
@@ -18,6 +16,7 @@ export {
 export {
   SetCategoriesList,
   SetFeaturesList,
+  SetComsList,
 } from './BasicInfo/BasicInfoAction';
 
 export {
@@ -29,7 +28,7 @@ export {
 
 export {
   CategoryMainSelected,
-  FeatureValuesListSelected,
+  SetFeatureValuesSelectedList,
   SearchTextEnter,
   ProductsListEnter,
   ProductsListLengthEnter,

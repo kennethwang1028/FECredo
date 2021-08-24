@@ -1,6 +1,6 @@
 import {
   CategoryMain,
-  FeatureValuesList,
+  featureValuesSelectedList,
   SearchText,
   ProductsList,
   ProductsListLength,
@@ -12,8 +12,8 @@ export const CategoryMainSelected = (categoryName = 'All') => ({
   payload: categoryName,
 });
 
-export const FeatureValuesListSelected = (featureIdList = []) => ({
-  type: FeatureValuesList,
+export const SetFeatureValuesSelectedList = (featureIdList = []) => ({
+  type: featureValuesSelectedList,
   payload: featureIdList,
 });
 

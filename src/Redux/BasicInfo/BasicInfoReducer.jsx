@@ -1,11 +1,13 @@
 import {
   CategoriesList,
   FeaturesList,
+  ComsList,
 } from './BasicInfoType';
 
 const initState = {
   categoriesList: [],
   featuresList: [],
+  comsList: [],
 };
 
 const basicInfoReducer = (state = initState, action) => {
@@ -17,6 +19,10 @@ const basicInfoReducer = (state = initState, action) => {
     case FeaturesList: return {
       ...state,
       featuresList: action.payload,
+    };
+    case ComsList: return {
+      ...state,
+      comsList: action.payload,
     };
     default: return state;
   }

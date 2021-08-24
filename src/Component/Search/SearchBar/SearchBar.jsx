@@ -24,7 +24,7 @@ const SearchBar = () => {
   const {
     categoryMain,
     searchText,
-    featureValuesList,
+    featureValuesSelectedList,
   } = useSelector((state) => state.search);
 
   const handleChangeSelect = (event) => {
@@ -47,8 +47,8 @@ const SearchBar = () => {
     if (searchText.length <= 3) {
       url += `&searchText=${searchText}`;
     }
-    if (featureValuesList.length > 0) {
-      url += `&featuresList=[${featureValuesList}]`;
+    if (featureValuesSelectedList.length > 0) {
+      url += `&featuresList=[${featureValuesSelectedList}]`;
     }
     axios(url2 + url)
       .then((res) => {

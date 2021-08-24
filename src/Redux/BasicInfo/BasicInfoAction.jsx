@@ -1,6 +1,7 @@
 import {
   CategoriesList,
   FeaturesList,
+  ComsList,
 } from './BasicInfoType';
 
 export const SetCategoriesList = (categoriesList = []) => ({
@@ -11,4 +12,9 @@ export const SetCategoriesList = (categoriesList = []) => ({
 export const SetFeaturesList = (featuresList = []) => ({
   type: FeaturesList,
   payload: featuresList,
+});
+
+export const SetComsList = (comsList = []) => ({
+  type: ComsList,
+  payload: comsList,
 });

@@ -1,6 +1,6 @@
 import {
   CategoryMain,
-  FeatureValuesList,
+  featureValuesSelectedList,
   SearchText,
   ProductsList,
   ProductsListLength,
@@ -9,7 +9,7 @@ import {
 
 const initState = {
   categoryMain: 0,
-  featureValuesList: [],
+  featureValuesSelectedList: [],
   searchText: '',
   productsList: [],
   productsListLength: 0,
@@ -22,9 +22,9 @@ const searchReducer = (state = initState, action) => {
       ...state,
       categoryMain: action.payload,
     };
-    case FeatureValuesList: return {
+    case featureValuesSelectedList: return {
       ...state,
-      featureValuesList: action.payload,
+      featureValuesSelectedList: action.payload,
     };
     case SearchText: return {
       ...state,

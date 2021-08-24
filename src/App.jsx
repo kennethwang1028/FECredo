@@ -10,6 +10,7 @@ import {
   SetCountWindowWidth,
   SetCountSideBarWidth,
   SetCountInfoWidth,
+  SetComsList,
 } from './Redux';
 
 import useWindowDimensions from './window/window';
@@ -65,11 +66,19 @@ const App = () => {
         dispatch(SetCategoriesList(arr));
       })
       .catch((err) => console.log(err));
+
     axios('http://localhost:3001/SDCredo/Features')
       .then((data) => {
         dispatch(SetFeaturesList(data.data));
       })
       .catch((err) => console.log(err));
+
+    axios('http://localhost:3001/SDCredo/Coms')
+      .then((data) => {
+        dispatch(SetComsList(data.data));
+      })
+      .catch((err) => console.log(err));
+
     console.error('Routes');
   }, []);
 
