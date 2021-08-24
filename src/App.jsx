@@ -4,6 +4,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 
 import {
+  FetchCategoriesList,
+  FetchComsList,
+  FetchFeaturesList,
+  LoadProductsList,
   SetCategoriesList,
   SetFeaturesList,
   SetCountWindowHeight,
@@ -60,25 +64,10 @@ const App = () => {
   }, [width, isSideBarClicked]);
 
   useEffect(() => {
-    axios('http://localhost:3001/SDCredo/Categories')
-      .then((data) => {
-        const arr = [{ categoryid: 0, categoryname: 'All' }].concat(data.data);
-        dispatch(SetCategoriesList(arr));
-      })
-      .catch((err) => console.log(err));
-
-    axios('http://localhost:3001/SDCredo/Features')
-      .then((data) => {
-        dispatch(SetFeaturesList(data.data));
-      })
-      .catch((err) => console.log(err));
-
-    axios('http://localhost:3001/SDCredo/Coms')
-      .then((data) => {
-        dispatch(SetComsList(data.data));
-      })
-      .catch((err) => console.log(err));
-
+    FetchCategoriesList(dispatch);
+    FetchComsList(dispatch);
+    FetchFeaturesList(dispatch);
+    LoadProductsList(dispatch);
     console.error('Routes');
   }, []);
 

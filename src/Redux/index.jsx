@@ -17,6 +17,9 @@ export {
   SetCategoriesList,
   SetFeaturesList,
   SetComsList,
+  FetchCategoriesList,
+  FetchFeaturesList,
+  FetchComsList,
 } from './BasicInfo/BasicInfoAction';
 
 export {
@@ -33,4 +36,6 @@ export {
   ProductsListEnter,
   ProductsListLengthEnter,
   SearchPageEnter,
+  LoadProductsList,
+  LoadProductsListLength,
 } from './Search/SearchAction';

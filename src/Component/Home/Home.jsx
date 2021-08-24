@@ -15,7 +15,7 @@ import CategoryData from './homeData';
 // fetch
 
 const Home = () => {
-  const isIconListClicked = useSelector((state) => state.sideBar.isIconListClicked);
+  const isIconListClicked = false;
 
   const promoteData = PromoteData.PromoteData;
   const categoryData = CategoryData.CategoryData;
@@ -30,7 +30,7 @@ const Home = () => {
     <HomeContainer
       extent={isIconListClicked}
     >
-      {/* <TopImageSelector /> */}
+      <TopImageSelector />
       <RowContainer>
         {promoteData.map((i) => (
           <CategoryBoxSingle

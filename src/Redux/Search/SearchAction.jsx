@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 import {
   CategoryMain,
   featureValuesSelectedList,
@@ -37,12 +39,42 @@ export const SearchPageEnter = (page = 0) => ({
   payload: page,
 });
 
-// const dispatch= useDispatch();
-// export const LoadProductsList = (dispatch)=>{
-//   fetch('url')
-//     .then((res)=>res.json())
-//     .then((data)=>{
-//       []
-//       dispatch(SearchPageEnter(data));
-//     })
-// }
+export const LoadProductsList = (
+  dispatch = () => {}, category = 0, page = 1, text = '', list = [],
+) => {
+  const url1 = 'http://localhost:3001/SDCredo/search';
+  let url = `?categoryId=${category}&start=${page - 1}`;
+
+  if (text.length <= 3) {
+    url += `&searchText=${text}`;
+  }
+  if (list.length > 0) {
+    url += `&featuresList=[${list}]`;
+  }
+  axios(url1 + url)
+    .then((res) => {
+      dispatch(ProductsListEnter(res.data));
+    })
+    .catch((err) => console.log(err));
+};
+
+export const LoadProductsListLength = (
+  dispatch = () => {}, category = 0, page = 1, text = '', list = [],
+) => {
+  const url1 = 'http://localhost:3001/SDCredo/searchLength';
+  let url = `?categoryId=${category}&start=${page - 1}`;
+
+  if (text.length <= 3) {
+    url += `&searchText=${text}`;
+  }
+  if (list.length > 0) {
+    url += `&featuresList=[${list}]`;
+  }
+  axios(url1 + url)
+    .then((res) => {
+      const len = res.data[0].count;
+      dispatch(ProductsListLengthEnter(len));
+      dispatch(SearchPageEnter(1));
+    })
+    .catch((err) => console.log(err));
+};

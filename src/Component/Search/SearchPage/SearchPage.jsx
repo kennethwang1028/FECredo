@@ -1,9 +1,9 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import axios from 'axios';
+
 import {
   SearchPageEnter,
-  ProductsListEnter,
+  LoadProductsList,
 } from '../../../Redux';
 
 import {
@@ -27,39 +27,40 @@ const SearchPage = () => {
     howManyPages += 1;
   }
 
-  const fetchProductInfo = (page) => {
-    const url1 = 'http://localhost:3001/SDCredo/search';
-    let url = `?categoryId=${categoryMain}&start=${page - 1}`;
-
-    if (searchText.length <= 3) {
-      url += `&searchText=${searchText}`;
-    }
-    if (featureValuesSelectedList.length > 0) {
-      url += `&featuresList=[${featureValuesSelectedList}]`;
-    }
-    axios(url1 + url)
-      .then((res) => {
-        dispatch(ProductsListEnter(res.data));
-      })
-      .catch((err) => console.log(err));
-  };
-
   const handleClickedPrev = () => {
     const num = searchPage - 1;
     dispatch(SearchPageEnter(num));
-    fetchProductInfo(num);
+    LoadProductsList(
+      dispatch,
+      categoryMain,
+      num,
+      searchText,
+      featureValuesSelectedList,
+    );
   };
 
   const handleClickedNext = () => {
     const num = searchPage + 1;
     dispatch(SearchPageEnter(num));
-    fetchProductInfo(num);
+    LoadProductsList(
+      dispatch,
+      categoryMain,
+      num,
+      searchText,
+      featureValuesSelectedList,
+    );
   };
 
   const handleClickedPage = (event) => {
     const num = Number(event.target.id);
     dispatch(SearchPageEnter(num));
-    fetchProductInfo(num);
+    LoadProductsList(
+      dispatch,
+      categoryMain,
+      num,
+      searchText,
+      featureValuesSelectedList,
+    );
   };
 
   const button = (num) => (

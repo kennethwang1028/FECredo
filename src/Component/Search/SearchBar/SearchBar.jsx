@@ -1,13 +1,11 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import axios from 'axios';
 
 import {
+  LoadProductsList,
+  LoadProductsListLength,
   CategoryMainSelected,
   SearchTextEnter,
-  SearchPageEnter,
-  ProductsListEnter,
-  ProductsListLengthEnter,
 } from '../../../Redux';
 
 import {
@@ -40,28 +38,20 @@ const SearchBar = () => {
   };
 
   const handleClicked = () => {
-    const url1 = 'http://localhost:3001/SDCredo/searchLength';
-    const url2 = 'http://localhost:3001/SDCredo/search';
-    let url = `?categoryId=${categoryMain}&start=0`;
-
-    if (searchText.length <= 3) {
-      url += `&searchText=${searchText}`;
-    }
-    if (featureValuesSelectedList.length > 0) {
-      url += `&featuresList=[${featureValuesSelectedList}]`;
-    }
-    axios(url2 + url)
-      .then((res) => {
-        dispatch(ProductsListEnter(res.data));
-      })
-      .catch((err) => console.log(err));
-    axios(url1 + url)
-      .then((res) => {
-        const len = res.data[0].count;
-        dispatch(ProductsListLengthEnter(len));
-        dispatch(SearchPageEnter(1));
-      })
-      .catch((err) => console.log(err));
+    LoadProductsList(
+      dispatch,
+      categoryMain,
+      1,
+      searchText,
+      featureValuesSelectedList,
+    );
+    LoadProductsListLength(
+      dispatch,
+      categoryMain,
+      1,
+      searchText,
+      featureValuesSelectedList,
+    );
   };
 
   return (
