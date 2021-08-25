@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import imgSize from '../../../../Function/imgSize';
-import { ProductMainImageSelected } from '../../../../../Redux';
+import { SetProductMainImage } from '../../../../../Redux';
 
 import {
   ProductSmallImageContainer,
@@ -18,7 +18,7 @@ const ProductSmallImages = () => {
   const dispatch = useDispatch();
 
   const handleClicked = (url) => {
-    dispatch(ProductMainImageSelected(url));
+    dispatch(SetProductMainImage(url));
   };
 
   return (

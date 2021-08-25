@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import imgSize from '../../../Function/imgSize';
-import { ProductMainImageSelected } from '../../../../Redux';
+import { SetProductMainImage } from '../../../../Redux';
 
 import ProductSmallImages from './ProductSmallImage/ProductSmallImage';
 
@@ -43,18 +43,18 @@ const ProductImage = () => {
   const handleClickedPrev = () => {
     const index = photoURLList.indexOf(productMainImageURL);
     if (index === photoURLList.length - 1) {
-      dispatch(ProductMainImageSelected(photoURLList[0]));
+      dispatch(SetProductMainImage(photoURLList[0]));
     } else {
-      dispatch(ProductMainImageSelected(photoURLList[index + 1]));
+      dispatch(SetProductMainImage(photoURLList[index + 1]));
     }
   };
 
   const handleClickedNext = () => {
     const index = photoURLList.indexOf(productMainImageURL);
     if (index === 0) {
-      dispatch(ProductMainImageSelected(photoURLList[photoURLList.length - 1]));
+      dispatch(SetProductMainImage(photoURLList[photoURLList.length - 1]));
     } else {
-      dispatch(ProductMainImageSelected(photoURLList[index - 1]));
+      dispatch(SetProductMainImage(photoURLList[index - 1]));
     }
   };
 

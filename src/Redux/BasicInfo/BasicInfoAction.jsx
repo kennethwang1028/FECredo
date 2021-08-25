@@ -21,7 +21,7 @@ export const SetComsList = (comsList = []) => ({
   payload: comsList,
 });
 
-export const FetchCategoriesList = (dispatch) => {
+export const FetchCategoriesList = (dispatch = () => ('function')) => {
   axios('http://localhost:3001/SDCredo/Categories')
     .then((data) => {
       const arr = [{ categoryid: 0, categoryname: 'All' }].concat(data.data);
@@ -29,7 +29,7 @@ export const FetchCategoriesList = (dispatch) => {
     });
 };
 
-export const FetchFeaturesList = (dispatch) => {
+export const FetchFeaturesList = (dispatch = () => ('function')) => {
   axios('http://localhost:3001/SDCredo/Features')
     .then((data) => {
       dispatch(SetFeaturesList(data.data));
@@ -37,7 +37,7 @@ export const FetchFeaturesList = (dispatch) => {
     .catch((err) => console.log(err));
 };
 
-export const FetchComsList = (dispatch) => {
+export const FetchComsList = (dispatch = () => ('function')) => {
   axios('http://localhost:3001/SDCredo/Coms')
     .then((data) => {
       dispatch(SetComsList(data.data));

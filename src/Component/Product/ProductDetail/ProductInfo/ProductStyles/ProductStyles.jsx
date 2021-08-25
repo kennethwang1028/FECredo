@@ -2,8 +2,8 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import {
-  ProductMainStyleSelected,
-  ProductMainImageSelected,
+  SetProductMainStyle,
+  SetProductMainImage,
 } from '../../../../../Redux';
 
 import {
@@ -25,8 +25,8 @@ const ProductStyles = () => {
     } else {
       url = './icon/no.jpeg';
     }
-    dispatch(ProductMainStyleSelected(stylesList[index]));
-    dispatch(ProductMainImageSelected(url));
+    dispatch(SetProductMainStyle(stylesList[index]));
+    dispatch(SetProductMainImage(url));
   };
 
   return (

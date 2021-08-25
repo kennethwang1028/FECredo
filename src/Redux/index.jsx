@@ -23,10 +23,13 @@ export {
 } from './BasicInfo/BasicInfoAction';
 
 export {
-  ProductEnter,
-  ProductMainImageSelected,
-  ProductMainStyleSelected,
-  ProductIdSelected,
+  SetProduct,
+  SetProductMainImage,
+  SetProductMainStyle,
+  SetProductId,
+  FetchProduct,
+  SetProductList,
+  SetProductIdList,
 } from './Product/ProductAction';
 
 export {

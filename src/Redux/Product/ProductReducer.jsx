@@ -3,6 +3,8 @@ import {
   productMainImageURL,
   ProductMainStyle,
   ProductId,
+  ProductList,
+  ProductIdList,
 } from './ProductType';
 
 const initState = {
@@ -10,6 +12,8 @@ const initState = {
   productId: 1,
   productMainImageURL: 0,
   productMainStyle: {},
+  productList: [],
+  productIdList: [],
 };
 
 const productReducer = (state = initState, action) => {
@@ -29,6 +33,14 @@ const productReducer = (state = initState, action) => {
     case ProductId: return {
       ...state,
       productId: action.payload,
+    };
+    case ProductList: return {
+      ...state,
+      productList: action.payload,
+    };
+    case ProductIdList: return {
+      ...state,
+      productIdList: action.payload,
     };
     default: return state;
   }

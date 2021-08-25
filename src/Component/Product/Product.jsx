@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import axios from 'axios';
 
 import {
-  ProductEnter,
-  ProductMainImageSelected,
-  ProductMainStyleSelected,
+  SetProduct,
+  SetProductMainImage,
+  SetProductMainStyle,
+  FetchProduct,
+  SetProductList,
+  SetProductIdList,
 } from '../../Redux';
+
+import urlCreated from '../Function/urlCreated';
 
 import ProductDetail from './ProductDetail/ProductDetail';
 import ProductRelated from './ProductRelated/ProductRelated';
@@ -17,26 +21,35 @@ import {
 
 const Product = () => {
   const width = useSelector((state) => state.window.windowWidth);
-  const productId = useSelector((state) => state.product.productId);
+  const {
+    productId,
+    product,
+    productIdList,
+    productList,
+  } = useSelector((state) => state.product);
 
   const dispatch = useDispatch();
 
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    axios(`http://localhost:3001/products/${productId}`)
-      .then((res) => {
-        const { data } = res;
-        const mainStyle = data.styles[0] || [];
-        const ImageList = mainStyle.photos || [{ photoId: 0, url: './icon/no.jpeg' }];
-        const mainImage = ImageList[0];
-
-        dispatch(ProductEnter(data));
-        dispatch(ProductMainStyleSelected(mainStyle));
-        dispatch(ProductMainImageSelected(mainImage.url));
-
-        setLoading(true);
+    const index = productIdList.indexOf(productId);
+    if (index >= 0) {
+      const data = productIdList[index];
+      const style = null || data.styles[0];
+      const photo = null || style.photos[0];
+      dispatch(SetProduct(data));
+      dispatch(SetProductMainStyle(style));
+      dispatch(SetProductMainImage(photo));
+    } else {
+      FetchProduct({
+        dispatch,
+        productId,
+        productList,
+        productIdList,
+        func: setLoading,
       });
+    }
   }, [productId]);
 
   return (
@@ -46,8 +59,8 @@ const Product = () => {
           <Container
             width={width}
           >
-            <ProductDetail />
-            <ProductRelated />
+            {/* <ProductDetail /> */}
+            {/* <ProductRelated /> */}
           </Container>
         )
         : <div>loading</div>}

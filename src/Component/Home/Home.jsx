@@ -30,7 +30,7 @@ const Home = () => {
     <HomeContainer
       extent={isIconListClicked}
     >
-      <TopImageSelector />
+      {/* <TopImageSelector /> */}
       <RowContainer>
         {promoteData.map((i) => (
           <CategoryBoxSingle

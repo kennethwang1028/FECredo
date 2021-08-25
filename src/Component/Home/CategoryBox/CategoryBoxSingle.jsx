@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 
 import imgSize from '../../Function/imgSize';
 import {
-  ProductIdSelected,
+  SetProductId,
 } from '../../../Redux';
 
 import {
@@ -30,7 +30,7 @@ const CategoryBoxSingle = (props) => {
 
   const handleClicked = () => {
     history.push('/product');
-    dispatch(ProductIdSelected(id));
+    dispatch(SetProductId(id));
   };
 
   return (

@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import imgSize from '../Function/imgSize';
 
 import {
-  ProductIdSelected,
+  SetProductId,
 } from '../../Redux';
 
 import {
@@ -37,7 +37,7 @@ const InfoCardSingle = (props) => {
 
   const handleClicked = () => {
     history.push(`/product/${id}`);
-    dispatch(ProductIdSelected(id));
+    dispatch(SetProductId(id));
   };
 
   return (
