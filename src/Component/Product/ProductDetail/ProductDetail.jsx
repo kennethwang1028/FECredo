@@ -5,17 +5,17 @@ import ProductImage from './ProductImage/ProductImage';
 import ProductInfo from './ProductInfo/ProductInfo';
 
 import {
-  ProductDetailContainer,
+  ProductDetailContainerStyle,
 } from '../ProductStyle';
 
 const ProductDetail = () => {
-  const width = useSelector((state) => state.window.windowWidth);
+  const width = useSelector((state) => state.window.countInfoWidth);
 
   return (
-    <ProductDetailContainer isRow={width > 700}>
-      <ProductImage isRow={width > 700} />
-      <ProductInfo isRow={width > 700} />
-    </ProductDetailContainer>
+    <ProductDetailContainerStyle isRow={width > 700}>
+      <ProductImage />
+      <ProductInfo />
+    </ProductDetailContainerStyle>
   );
 };
 

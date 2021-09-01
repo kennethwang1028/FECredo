@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import imgSize from '../../../Function/imgSize';
+import urlCreated from '../../../Function/urlCreated';
 import { SetProductMainImage } from '../../../../Redux';
 
 import ProductSmallImages from './ProductSmallImage/ProductSmallImage';
@@ -14,23 +14,25 @@ import {
 } from '../../ProductStyle';
 
 const ProductImage = () => {
-  const width = useSelector((state) => state.window.windowWidth);
-  const imageList = useSelector((state) => state.product.productMainStyle.photos) || [];
-  const productMainImageURL = useSelector((state) => state.product.productMainImageURL);
-
-  let photoURLList;
-
-  if (imageList.length !== 1) {
-    photoURLList = imageList.map((i) => i.url);
-  }
+  const dispatch = useDispatch();
+  const width = useSelector((state) => state.window.countInfoWidth);
+  const {
+    comsList,
+  } = useSelector((state) => state.basicInfo);
+  const {
+    productMainImageURL,
+    productMainStyle,
+  } = useSelector((state) => state.product);
 
   const [zoomCount, setZoomCount] = useState(0);
+
   const sizeNum = 260 * (1 + zoomCount * 0.25);
-  const dispatch = useDispatch();
+  const photosList = productMainStyle.photos;
+  const stylePhotoIdList = photosList.map((i) => i.photoid);
 
   useEffect(() => {
     setZoomCount(0);
-  }, [productMainImageURL]);
+  }, [productMainImageURL.url]);
 
   const handleClickedZoomIn = () => {
     setZoomCount(zoomCount + 1);
@@ -41,20 +43,20 @@ const ProductImage = () => {
   };
 
   const handleClickedPrev = () => {
-    const index = photoURLList.indexOf(productMainImageURL);
-    if (index === photoURLList.length - 1) {
-      dispatch(SetProductMainImage(photoURLList[0]));
+    const index = stylePhotoIdList.indexOf(productMainImageURL.photoid);
+    if (index === photosList.length - 1) {
+      dispatch(SetProductMainImage(photosList[0]));
     } else {
-      dispatch(SetProductMainImage(photoURLList[index + 1]));
+      dispatch(SetProductMainImage(photosList[index + 1]));
     }
   };
 
   const handleClickedNext = () => {
-    const index = photoURLList.indexOf(productMainImageURL);
+    const index = stylePhotoIdList.indexOf(productMainImageURL.photoid);
     if (index === 0) {
-      dispatch(SetProductMainImage(photoURLList[photoURLList.length - 1]));
+      dispatch(SetProductMainImage(photosList[photosList.length - 1]));
     } else {
-      dispatch(SetProductMainImage(photoURLList[index - 1]));
+      dispatch(SetProductMainImage(photosList[index - 1]));
     }
   };
 
@@ -68,7 +70,10 @@ const ProductImage = () => {
       <ProductSmallImages />
       <ProductMainImageContainer>
         <img
-          src={imgSize(productMainImageURL, sizeNum)}
+          src={urlCreated({
+            photo: productMainImageURL,
+            comsList,
+          })}
           width={sizeNum}
           height="auto"
           alt=""

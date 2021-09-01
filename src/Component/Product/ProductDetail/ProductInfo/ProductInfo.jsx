@@ -1,31 +1,47 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 
-import ProductStyles from './ProductStyles/ProductStyles';
+import ProductStylesImages from './ProductStylesImages/ProductStylesImages';
 
 import {
-  ProductInfoContainer,
-  ProductText,
-  Row,
+  ContainerStyle,
+  RowStyle,
+  ProductTextStyle,
+  StylesButtonStyle,
+  ColumnEnd,
   Column,
   Select,
 } from '../../ProductStyle';
 
 const ProductInfo = () => {
-  const product = useSelector((state) => state.product.product);
-  const width = useSelector((state) => state.window.windowWidth);
-  const style = useSelector((state) => state.product.productMainStyle);
-  const skus = useSelector((state) => state.product.productMainStyle.skus)
-  || [{ skusId: 0, qty: 0 }];
+  const width = useSelector((state) => state.window.countInfoWidth);
+  const {
+    categoriesList,
+  } = useSelector((state) => state.basicInfo);
+  const {
+    product,
+    productMainStyle,
+  } = useSelector((state) => state.product);
 
-  const [sizeId, setSizeId] = useState(skus[0].skusId);
-  const [maxQty, setMaxQty] = useState(skus[0].qty);
+  const category = categoriesList.filter(
+    (i) => i.categoryid === product.category.categoryid,
+  );
+
+  const {
+    onsale,
+    price,
+    skus,
+    stylename,
+  } = productMainStyle;
+
+  const [sizeId, setSizeId] = useState(skus[0].skusid);
+  const [maxQty, setMaxQty] = useState(skus[0].quantity);
   const [qty, setQty] = useState(0);
 
   const handleChangeSize = (event) => {
     const skusObj = skus.filter((i) => i.size === event.target.value);
-    setSizeId(skusObj[0].skusId);
-    setMaxQty(skusObj[0].qty);
+    setSizeId(skusObj[0].skusid);
+    setMaxQty(skusObj[0].quantity);
     setQty(1);
   };
 
@@ -34,102 +50,154 @@ const ProductInfo = () => {
   };
 
   return (
-    <ProductInfoContainer isRow={width > 700}>
-      <Row>
-        <ProductText size={3}>{product.name}</ProductText>
-        <ProductText size={2}>{product.category}</ProductText>
-      </Row>
-      <Row>
+    <ContainerStyle width={width > 700 ? width * 0.4 : width}>
+      <RowStyle>
+        <ProductTextStyle
+          fontSize="20"
+        >
+          {product.productname}
+        </ProductTextStyle>
+        <ProductTextStyle
+          fontSize="18"
+        >
+          {category[0].categoryname}
+        </ProductTextStyle>
+      </RowStyle>
+      <RowStyle>
         <Column>
-          <div>{style.styleName}</div>
-          <div>{product.slogan}</div>
-          <div>
-            Price: $
-            {' '}
-            {style.price}
-            .00
-          </div>
-          {style.onSale !== 'null'
+          <ProductTextStyle
+            fontSize="18"
+          >
+            {stylename}
+          </ProductTextStyle>
+          <ProductTextStyle
+            fontSize="16"
+          >
+            {product.slogan}
+          </ProductTextStyle>
+          {onsale !== 0
             ? (
-              <ProductText color="red">
-                onSale-Price: $
-                {' '}
-                {style.onSale}
-                .00
-              </ProductText>
+              <ProductTextStyle
+                fontSize="16"
+                color="red"
+              >
+                {`onSale-Price: $ ${onsale}.00`}
+              </ProductTextStyle>
             )
             : (
-              <ProductText color="black">ji</ProductText>
+              <ProductTextStyle
+                fontSize="16"
+                color="black"
+              >
+                ji
+              </ProductTextStyle>
             )}
+          <ProductTextStyle
+            fontSize="16"
+          >
+            {`Price: $ ${price}.00`}
+          </ProductTextStyle>
         </Column>
-        {skus[0].skusId === 0 ? <ProductText color="red">No Available</ProductText>
+        {skus[0].skusid === 0
+          ? (
+            <ProductTextStyle
+              fontSize="16"
+            >
+              No Available
+            </ProductTextStyle>
+          )
           : (
             <Column>
-              <Row>
-                <div>Size:</div>
+              <RowStyle>
+                <ProductTextStyle
+                  fontSize="16"
+                >
+                  Size:
+                </ProductTextStyle>
                 <Select
                   isRow={width > 700}
                   onChange={handleChangeSize}
                 >
                   {skus.map((i) => (
-                    <option key={i.skusId}>{i.size}</option>
+                    <option
+                      key={i.skusid}
+                    >
+                      {i.size}
+                    </option>
                   ))}
                 </Select>
-              </Row>
-              <Row>
+              </RowStyle>
+              <RowStyle>
                 {maxQty <= 5 && maxQty !== 0 ? (
-                  <ProductText color="red">
+                  <ProductTextStyle
+                    color="red"
+                  >
                     {`last ${maxQty}`}
-                  </ProductText>
+                  </ProductTextStyle>
                 ) : null}
-              </Row>
-              <Row>
-                <div>Qty:</div>
+              </RowStyle>
+              <RowStyle>
+                <ProductTextStyle>
+                  Qty:
+                </ProductTextStyle>
                 {maxQty === 0
-                  ? <ProductText color="red">Out of Stock </ProductText>
+                  ? (
+                    <ProductTextStyle
+                      color="red"
+                    >
+                      Out of Stock
+                    </ProductTextStyle>
+                  )
                   : (
                     <Select
                       isRow={width > 700}
                       onChange={handleChangeQty}
                     >
                       {[...Array(maxQty)].map((i, index) => (
-                        <option key={index}>{index + 1}</option>
+                        <option
+                          key={index}
+                        >
+                          {index + 1}
+                        </option>
                       ))}
                     </Select>
                   )}
-              </Row>
+              </RowStyle>
             </Column>
           )}
-      </Row>
-      <Row>
-        {product.description}
-      </Row>
-      <Row>
-        {product.feature ? product.feature.map((i, index) => (
-          <div key={index}>
-            {i.name}
-            {' '}
-            :
-            {' '}
-            {i.value}
-          </div>
-        )) : null}
-      </Row>
-      <Row>
-        <ProductStyles />
-        <Column>
-          <ProductText color="red">
-            {' '}
-            Total : $
-            {qty * style.onSale || qty * style.price}
-            .00
-          </ProductText>
-          <button>Add to Cart</button>
-        </Column>
-
-      </Row>
-
-    </ProductInfoContainer>
+      </RowStyle>
+      <RowStyle>
+        <ProductTextStyle>
+          {product.description}
+        </ProductTextStyle>
+      </RowStyle>
+      <RowStyle>
+        {product.featurevalue.map((i) => (
+          <ProductTextStyle
+            key={i}
+          >
+            {i}
+          </ProductTextStyle>
+        ))}
+      </RowStyle>
+      <RowStyle>
+        <ProductStylesImages />
+        <ColumnEnd>
+          <ProductTextStyle
+            color="yellow"
+          >
+            {`Total : $${qty * onsale || qty * price}.00`}
+          </ProductTextStyle>
+          <StylesButtonStyle
+            width="50"
+            heigth="50"
+            onClick={() => console.log('hi')}
+          >
+            Add to Cart
+          </StylesButtonStyle>
+        </ColumnEnd>
+      </RowStyle>
+    </ContainerStyle>
   );
 };
 

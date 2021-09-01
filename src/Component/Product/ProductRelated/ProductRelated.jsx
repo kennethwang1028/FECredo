@@ -1,17 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
-import InfoCardSingle from '../../InfoCard/InfoCardSingle';
+import urlCreated from '../../Function/urlCreated';
+
+import InfoCardSingle from '../../InfoCard/InfoCardSingle/InfoCardSingle';
 
 import {
-  ProductStylesButton,
-  ProductDetailContainer,
+  ContainerStyle,
+  RowConatainerStyle,
+  ProductButtonStyle,
 } from '../ProductStyle';
 
 const ProductRelated = () => {
-  const width = useSelector((state) => state.window.windowWidth);
-  const relateproduct = useSelector((state) => state.product.product.relateproduct) || [];
+  const {
+    comsList,
+    categoriesList,
+  } = useSelector((state) => state.basicInfo);
+  let width = useSelector((state) => state.window.countInfoWidth);
+  const relateproduct = useSelector((state) => state.product.product.relatedproducts);
   const len = relateproduct.length;
+  if (width < 400) {
+    width = 400;
+  }
   const howManyShowed = Math.floor((width - 100) / 250);
 
   const [showList, setShowList] = useState(relateproduct.slice(0, howManyShowed));
@@ -40,32 +50,39 @@ const ProductRelated = () => {
     setStartCount(newStart);
     setShowList(newArray.slice(newStart, newStart + howManyShowed));
   };
-
   return (
-    <ProductDetailContainer isRow>
-      <ProductStylesButton
-        type="button"
-        onClick={handleClickedPrev}
-      >
-        {'<<'}
-      </ProductStylesButton>
-      {showList.map((i) => (
-        <InfoCardSingle
-          key={i.id}
-          id={i.id}
-          name={i.name}
-          photo={i.photo}
-          slogan={i.slogan}
-          feature={i.feature}
-        />
-      ))}
-      <ProductStylesButton
-        type="button"
-        onClick={handleClickedNext}
-      >
-        {'>>'}
-      </ProductStylesButton>
-    </ProductDetailContainer>
+    <ContainerStyle
+      width={width}
+    >
+      <RowConatainerStyle>
+        <ProductButtonStyle
+          type="button"
+          onClick={handleClickedPrev}
+        >
+          {'<<'}
+        </ProductButtonStyle>
+        {showList.map((i) => (
+          <InfoCardSingle
+            key={i.productid}
+            id={i.productid}
+            name={i.productname}
+            photo={urlCreated({
+              photo: i.photo,
+              comsList,
+            })}
+            slogan={i.slogan}
+            feature={i.feature}
+            category={categoriesList[i.category].categoryname}
+          />
+        ))}
+        <ProductButtonStyle
+          type="button"
+          onClick={handleClickedNext}
+        >
+          {'>>'}
+        </ProductButtonStyle>
+      </RowConatainerStyle>
+    </ContainerStyle>
   );
 };
 

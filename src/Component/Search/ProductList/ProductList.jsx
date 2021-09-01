@@ -23,7 +23,10 @@ const ProductList = () => {
           productid={i.productid}
           productname={i.productname}
           slogan={i.slogan}
-          url={urlCreated(i.photo, comsList)}
+          url={urlCreated({
+            photo: i.photo,
+            comsList,
+          })}
           features={i.features}
         />
       ))}

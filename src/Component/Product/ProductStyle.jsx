@@ -1,13 +1,55 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
-  width:  ${(props) => (props.width - 15)}px;
-  overflow:auto;
-  position:relative;
+export const ContainerStyle = styled.div`
+  width:${(props) => props.width}px;
+  min-width: 400px;
 `;
 
-export const ProductDetailContainer = styled.div`
-  width: 100%;
+export const RowConatainerStyle = styled.div`
+  min-width: 400px;
+  padding:10px;
+  display:flex;
+  flex-direction: row;
+  justify-content:space-evenly;
+  align-items: center;
+`;
+
+export const RowStyle = styled.div`
+  width: 95%;
+  display:flex;
+  flex-direction: row;
+  justify-content:space-between;
+  align-items: center;
+`;
+
+export const ProductButtonStyle = styled.button`
+  width:5vw;
+  min-width:50px;
+  height:5vw;
+  min-height:50px;
+  border-radius: 5vw;
+  &: hover {
+    background-color: #a5aaad;
+  }
+  &: active {
+    border:2px solid red;
+  }
+  // overflow:hidden;
+  // background-image:url(${(props) => props.src});
+  // background-size:cover;
+  // border-radius:10px;
+  // ${(props) => (props.isSeleced ? 'border:2px solid red;' : null)}
+`;
+
+export const StylesButtonStyle = styled(ProductButtonStyle)`
+  width:20px;
+  height:20px;
+  background-image:url(${(props) => props.src});
+  background-size:cover
+`;
+
+export const ProductDetailContainerStyle = styled.div`
+  min-width: 400px;
   display: flex;
   flex-direction: ${(props) => (props.isRow ? 'row' : 'column')};
   justify-content: center;
@@ -55,7 +97,7 @@ export const ProductSmallImageContainer = styled.div`
   font-size:1.5vw;
 `;
 
-export const ProductSmallImageButton = styled.button`
+export const ProductSmallImageButtonStyle = styled.button`
   width:5vw;
   min-width:50px;
   overflow:hidden;
@@ -105,22 +147,26 @@ export const ProductStylesContainer = styled.div`
   color:white;
 `;
 
-export const ProductStylesButton = styled(ProductSmallImageButton)`
-  border-radius: 5vw;
+export const ProductTextStyle = styled.div`
+  font-size: ${(props) => props.fontSize}px;
+  color: ${(props) => (props.color ? props.color : 'white')};
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  margin:0px;
+  margin-top:5px;
+  &:hover {
+    -webkit-line-clamp: 10;
+}
 `;
 
-export const ProductText = styled.div`
-  font-size:${(props) => props.size}vw;
-  color:${(props) => (props.color ? props.color : 'white')};
-`;
-
-export const Row = styled.div`
-  width:90%;
+export const RowContainerStyle = styled.div`
+  padding-top:1vw;
+  color:black;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  margin:0vw 1vw;
-  padding:0vw 1vw 0.5vw 1vw;
+  justify-content: center;
 `;
 
 export const Column = styled.div`
@@ -131,12 +177,15 @@ export const Column = styled.div`
   margin:0vw 0vw;
   padding:0vw 0vw;
 `;
+export const ColumnEnd = styled(Column)`
+  align-items: flex-end;
+`;
 
 export const Select = styled.select`
   width: 20vw;
   display: flex;
   flex-direction: column;
-  font-size:${(props) => (props.isRow ? '1.5vw' : '3vw')};
+  font-size:16px;
   justify-content: space-between;
   border-radius:5px;
   margin:0vw 1vw;

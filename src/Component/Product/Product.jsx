@@ -10,17 +10,15 @@ import {
   SetProductIdList,
 } from '../../Redux';
 
-import urlCreated from '../Function/urlCreated';
-
 import ProductDetail from './ProductDetail/ProductDetail';
 import ProductRelated from './ProductRelated/ProductRelated';
 
 import {
-  Container,
+  ContainerStyle,
 } from './ProductStyle';
 
 const Product = () => {
-  const width = useSelector((state) => state.window.windowWidth);
+  const width = useSelector((state) => state.window.countInfoWidth);
   const {
     productId,
     product,
@@ -35,12 +33,13 @@ const Product = () => {
   useEffect(() => {
     const index = productIdList.indexOf(productId);
     if (index >= 0) {
-      const data = productIdList[index];
+      const data = productList[index];
       const style = null || data.styles[0];
       const photo = null || style.photos[0];
       dispatch(SetProduct(data));
       dispatch(SetProductMainStyle(style));
       dispatch(SetProductMainImage(photo));
+      setLoading(true);
     } else {
       FetchProduct({
         dispatch,
@@ -56,12 +55,12 @@ const Product = () => {
     <>
       {loading
         ? (
-          <Container
+          <ContainerStyle
             width={width}
           >
-            {/* <ProductDetail /> */}
-            {/* <ProductRelated /> */}
-          </Container>
+            <ProductDetail />
+            <ProductRelated />
+          </ContainerStyle>
         )
         : <div>loading</div>}
     </>

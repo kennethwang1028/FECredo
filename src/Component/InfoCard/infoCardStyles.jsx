@@ -1,32 +1,24 @@
 import styled from 'styled-components';
 
-export const InfoCardContainer = styled.div`
-  color:white;
-  font-size: 3vw;
-  border: 1px solid white;
-  border-radius: 10px;
-  margin:1vw;
-  padding:1vw;
-  height: 400px;
+export const InfoCardContainerStyle = styled.button`
+  width:200px;
+  height:380px;
+  padding: 5px;
+  border-radius:10px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items: center;
   overflow:hidden;
-  justify-content: space-evenly;
 `;
 
-export const SmallContainer = styled.div`
-  width: ${(props) => props.width};
-  height: ${(props) => props.height};
-  background-color:black;
-`;
-
-export const Text = styled.div`
-  width:200px;
-  height: ${(props) => props.height}vw;
-  font-size: ${(props) => props.fontSize}vw;
-`;
-
-export const Img = styled.img`
-  width:200px;
-  height: 200px;
+export const SmallContainerStyle = styled.div`
+  width:180px;
+  display:flex;
+  flex-direction:column;
+  align-items: center;
+  height:${(props) => props.height}px;
+  background-color: white;
 `;
 
 export const ContainerStyle = styled.button`

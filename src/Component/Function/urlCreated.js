@@ -1,11 +1,14 @@
-const urlCreated = (photo, comsList) => {
-  if (photo === 'null' || photo === null) {
-    return './no.jpeg';
+const urlCreated = ({
+  photo,
+  comsList,
+}) => {
+  if (photo === 'null' || photo === null || photo === undefined) {
+    return './icon/no.jpeg';
   }
   const {
-    comid, fomrmatid, size, url,
+    comid, formatid, size, url,
   } = photo;
-  return comsList[comid - 1].comtext + url + comsList[fomrmatid - 1].comtext + size;
+  return comsList[Number(comid) - 1].comtext + url + comsList[Number(formatid) - 1].comtext + size;
 };
 
 export default urlCreated;

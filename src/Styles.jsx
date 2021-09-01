@@ -31,6 +31,7 @@ export const NavSideBarContainerStyle = styled.div`
 export const NavInfoContainerStyle = styled.div`
   background: red;
   width: ${(props) => (props.width)}px;
+  min-width: 400px;
   display:flex;
   flex-direction:column;
 `;
@@ -50,6 +51,7 @@ export const SideBarListContainerStyle = styled.div`
 
 export const TopBarContainerStyle = styled.div`
   background: #edf2f5;
+  min-width: 400px;
   height: 10vw;
   max-height: 85px;
   min-height: 60px;
