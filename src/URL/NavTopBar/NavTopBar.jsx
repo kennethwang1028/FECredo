@@ -1,5 +1,5 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
 import Monkey from '../../Logo/Monkey';
 
@@ -11,16 +11,34 @@ import {
 } from '../../Styles';
 
 const NavTopBar = () => {
+  const dispatch = useDispatch();
+
   const {
     countInfoWidth,
     isSideBarClicked,
   } = useSelector((state) => state.window);
+  const {
+    isLoadUserInfo,
+    userInfo,
+  } = useSelector((state) => state.user);
+  const {
+    photo,
+    city,
+  } = userInfo;
+
+  const [searchText, setSearchText] = useState('');
 
   return (
     <TopBarContainerStyle>
       <Monkey />
-      {countInfoWidth < 900 || isSideBarClicked ? null : <NavInputText />}
-      <NavLinkStyle to="/">
+      {
+      countInfoWidth < 900 || isSideBarClicked
+        ? null
+        : (
+          <NavInputText />
+        )
+      }
+      <NavLinkStyle to="/search">
         <NavIconStyle
           alt="user"
           src="./icon/search.svg"
@@ -28,7 +46,15 @@ const NavTopBar = () => {
           height="40"
         />
       </NavLinkStyle>
-      {isSideBarClicked ? null : <NavInputText />}
+      {
+      isSideBarClicked
+        ? null
+        : (
+          isLoadUserInfo
+            ? <>{city}</>
+            : <NavInputText />
+        )
+      }
       <NavLinkStyle to="/location">
         <NavIconStyle
           alt="user"
@@ -37,11 +63,14 @@ const NavTopBar = () => {
           height="40"
         />
       </NavLinkStyle>
-      {isSideBarClicked ? null : <NavInputText />}
       <NavLinkStyle to="/login">
         <NavIconStyle
           alt="user"
-          src="./icon/portrait.svg"
+          src={
+            isLoadUserInfo
+              ? photo
+              : './icon/portrait.svg'
+          }
           width="40"
           height="40"
         />

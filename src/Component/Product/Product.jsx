@@ -6,8 +6,6 @@ import {
   SetProductMainImage,
   SetProductMainStyle,
   FetchProduct,
-  SetProductList,
-  SetProductIdList,
 } from '../../Redux';
 
 import ProductDetail from './ProductDetail/ProductDetail';
@@ -18,15 +16,14 @@ import {
 } from './ProductStyle';
 
 const Product = () => {
+  const dispatch = useDispatch();
+
   const width = useSelector((state) => state.window.countInfoWidth);
   const {
     productId,
-    product,
     productIdList,
     productList,
   } = useSelector((state) => state.product);
-
-  const dispatch = useDispatch();
 
   const [loading, setLoading] = useState(false);
 

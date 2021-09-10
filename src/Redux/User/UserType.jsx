@@ -1,4 +1,6 @@
-export const userName = 'user_name';
-export const userEmail = 'user_email';
-export const userPassword = 'user_password';
-export const userCity = 'user_city';
+export const userType = 'user_type';
+export const isUserEmailVailed = 'is_use_email_vaild';
+export const isUserPasswordVailed = 'is_user_password_vaild';
+export const userInfo = 'user_info';
+export const isLoadUserInfo = 'is_load_user_info';
+export const userFeverList = 'user_fever_list';

@@ -8,7 +8,12 @@ import {
 
 const InputText = (props) => {
   const {
-    text, isWarning, handleChange, warningText,
+    text,
+    isWarning,
+    handleChange,
+    warningText,
+    isVailed,
+    type,
   } = props;
 
   return (
@@ -17,7 +22,7 @@ const InputText = (props) => {
       <SignInInput
         data-testid="input"
         warning={isWarning}
-        type="text"
+        type={type}
         onChange={handleChange}
       />
       {isWarning ? (
@@ -25,6 +30,13 @@ const InputText = (props) => {
           data-testid="warning"
         >
           { `!! ${warningText} !!` }
+        </WarningText>
+      ) : null}
+      {isVailed === false ? (
+        <WarningText
+          data-testid="warning"
+        >
+          !! Email not Vailed !!
         </WarningText>
       ) : null}
     </div>
@@ -36,6 +48,7 @@ InputText.propTypes = {
   isWarning: PropTypes.bool,
   handleChange: PropTypes.func,
   warningText: PropTypes.string,
+  isUserEmailVailed: PropTypes.bool,
 };
 
 InputText.defaultProps = {
@@ -43,6 +56,7 @@ InputText.defaultProps = {
   isWarning: false,
   handleChange: () => 1,
   warningText: '',
+  isUserEmailVailed: null,
 };
 
 export default InputText;

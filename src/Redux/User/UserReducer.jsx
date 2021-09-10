@@ -1,34 +1,46 @@
 import {
-  userName,
-  userEmail,
-  userPassword,
-  userCity,
+  userType,
+  isUserEmailVailed,
+  isUserPasswordVailed,
+  userInfo,
+  isLoadUserInfo,
+  userFeverList,
 } from './UserType';
 
 const initState = {
-  userName: '',
-  userEmail: '',
-  userPassword: '',
-  userCity: '',
+  userType: 'user',
+  isUserEmailVailed: null,
+  isUserPasswordVailed: null,
+  userInfo: {},
+  isLoadUserInfo: false,
+  userFeverList: [],
 };
 
 const userReducer = (state = initState, action) => {
   switch (action.type) {
-    case userName: return {
+    case userType: return {
       ...state,
-      userName: action.payload,
+      userType: action.payload,
     };
-    case userEmail: return {
+    case isUserEmailVailed: return {
       ...state,
-      userEmail: action.payload,
+      isUserEmailVailed: action.payload,
     };
-    case userPassword: return {
+    case isUserPasswordVailed: return {
       ...state,
-      userPassword: action.payload,
+      isUserPasswordVailed: action.payload,
     };
-    case userCity: return {
+    case userInfo: return {
       ...state,
-      userCity: action.payload,
+      userInfo: action.payload,
+    };
+    case isLoadUserInfo: return {
+      ...state,
+      isLoadUserInfo: action.payload,
+    };
+    case userFeverList: return {
+      ...state,
+      userFeverList: action.payload,
     };
     default: return state;
   }

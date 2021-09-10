@@ -1,5 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+
+import {
+  SetProductId,
+} from '../../../Redux';
 
 import {
   ContainerStyle,
@@ -10,6 +16,9 @@ import {
 } from '../infoCardStyles';
 
 const InfoCardRow = (props) => {
+  const history = useHistory();
+  const dispatch = useDispatch();
+
   const {
     description,
     productid,
@@ -21,7 +30,8 @@ const InfoCardRow = (props) => {
   } = props;
 
   const handleClicked = () => {
-    console.log(productid);
+    dispatch(SetProductId(productid));
+    history.push('/product');
   };
 
   return (

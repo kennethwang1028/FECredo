@@ -1,29 +1,29 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
 
 import {
-  userNameEnter,
-  userEmailEnter,
-  userPasswordEnter,
-  userCityEnter,
+  // PostUser,
+  SetUserType,
 } from '../../Redux';
 
 import InputText from './InputText/InputText';
 
 import {
-  LogInContainer,
-  SignInContainer,
-  SignInText,
-  SignInButton,
+  SwitcherStyle,
+  RowStyle,
+  LogInContainerStyle,
+  SignInContainerStyle,
+  SignInTextStyle,
+  SignInButtonStyle,
 } from './LogInStyle';
 
 const SignUp = () => {
-  const isIconListClicked = useSelector((state) => state.sideBar.isIconListClicked);
   const dispatch = useDispatch();
-  const history = useHistory();
+  const width = useSelector((state) => state.window.countInfoWidth);
+  const { userType } = useSelector((state) => state.user);
 
-  const [name, setName] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [reEnterPassword, setReEnterPassword] = useState('');
@@ -31,8 +31,12 @@ const SignUp = () => {
 
   const [listWarning, setListWarning] = useState([]);
 
-  const handleChangeName = (event) => {
-    setName(event.target.value);
+  const handleChangeFirstName = (event) => {
+    setFirstName(event.target.value);
+  };
+
+  const handleChangeLastName = (event) => {
+    setLastName(event.target.value);
   };
 
   const handleChangeEmail = (event) => {
@@ -51,10 +55,21 @@ const SignUp = () => {
     setCity(event.target.value);
   };
 
+  const handleClickedUserType = () => {
+    if (userType === 'user') {
+      dispatch(SetUserType('owner'));
+    } else {
+      dispatch(SetUserType('user'));
+    }
+  };
+
   const handleClickedCreateAccount = () => {
     const arr = [];
-    if (name.length === 0) {
-      arr.push('name');
+    if (firstName.length === 0) {
+      arr.push('firstname');
+    }
+    if (lastName.length === 0) {
+      arr.push('lastname');
     }
     if (!email.includes('@') || !email.includes('.')) {
       arr.push('email');
@@ -75,25 +90,43 @@ const SignUp = () => {
     if (arr.length > 0) {
       setListWarning(arr);
     } else {
-      dispatch(userNameEnter(name));
-      dispatch(userEmailEnter(email));
-      dispatch(userPasswordEnter(password));
-      dispatch(userCityEnter(city));
-      history.push('/home');
+      // const user = {
+      //   first_name: firstName,
+      //   last_name: lastName,
+      //   email,
+      //   password,
+      //   city,
+      // };
+      // PostUser({ user });
+      console.error('Need to signup')
     }
   };
 
   return (
-    <LogInContainer
-      style={isIconListClicked ? { paddingLeft: '250px' } : null}
+    <LogInContainerStyle
+      width={width}
     >
-      <SignInContainer style={{ height: '500px' }}>
-        <SignInText>Create account</SignInText>
+      <SignInContainerStyle>
+        <RowStyle>
+          <SignInTextStyle>Create account</SignInTextStyle>
+          {userType}
+          <SwitcherStyle
+            type="button"
+            userType={userType}
+            onClick={handleClickedUserType}
+          />
+        </RowStyle>
         <InputText
-          text="Your Name"
-          isWarning={listWarning.includes('name')}
-          handleChange={handleChangeName}
-          warningText="Enter your Name"
+          text="First Name"
+          isWarning={listWarning.includes('firstname')}
+          handleChange={handleChangeFirstName}
+          warningText="Enter your first name"
+        />
+        <InputText
+          text="Last Name"
+          isWarning={listWarning.includes('lastname')}
+          handleChange={handleChangeLastName}
+          warningText="Enter your last name"
         />
         <InputText
           text="Email"
@@ -119,11 +152,11 @@ const SignUp = () => {
           handleChange={handleChangeCity}
           warningText="Enter City"
         />
-        <SignInButton
+        <SignInButtonStyle
           onClick={handleClickedCreateAccount}
         >
           Create your account
-        </SignInButton>
+        </SignInButtonStyle>
         <div>
           {'By continuing, you agree to Forest\'s '}
           <a href="/conditionsofuse">Conditions of Use</a>
@@ -132,8 +165,8 @@ const SignUp = () => {
           .
         </div>
         <div>Need Help?</div>
-      </SignInContainer>
-    </LogInContainer>
+      </SignInContainerStyle>
+    </LogInContainerStyle>
   );
 };
 

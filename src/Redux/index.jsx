@@ -7,10 +7,15 @@ export {
 } from './Window/WindowAction';
 
 export {
-  userNameEnter,
-  userEmailEnter,
-  userPasswordEnter,
-  userCityEnter,
+  SetUserType,
+  FetchIsUserEmailVailed,
+  FetchUser,
+  SetUserInfo,
+  FetchUpdateUserInfo,
+  IsUserEmailVailed,
+  IsUserPasswordVailed,
+  IsLoadUserInfo,
+  PostUser,
 } from './User/UserAction';
 
 export {

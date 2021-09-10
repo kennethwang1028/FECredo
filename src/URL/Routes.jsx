@@ -6,7 +6,7 @@ import Search from '../Component/Search/Search';
 import LogIn from '../Component/LogIn/LogIn';
 import SignUp from '../Component/LogIn/SignUp';
 import Product from '../Component/Product/Product';
-
+import FeverContainer from '../Component/Fever/FeverContainer';
 import { RoutesContainerStyle } from '../Styles';
 
 const Routes = () => (
@@ -68,6 +68,11 @@ const Routes = () => (
         path="/product"
       >
         <Product />
+      </Route>
+      <Route
+        path="/bookmark"
+      >
+        <FeverContainer />
       </Route>
     </Switch>
   </RoutesContainerStyle>
