@@ -40,6 +40,7 @@ export const SignInInput = styled.input`
 `;
 
 export const SignInButtonStyle = styled.button`
+  margin: 3px;
   height: 36px;
   font-size:24px;
   color:#9399a3;

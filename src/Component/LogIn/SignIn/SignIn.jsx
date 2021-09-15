@@ -59,6 +59,7 @@ const SignIn = () => {
     if (emailChecked && !isWarningEmail) {
       FetchIsUserEmailVailed({
         dispatch,
+        type: userType,
         email,
       });
       if (passwordChecked && !isWarningPassword) {
@@ -66,6 +67,7 @@ const SignIn = () => {
           dispatch,
           email,
           password,
+          type: userType,
         });
       }
     }

@@ -25,14 +25,14 @@ const SignedIn = () => {
     userInfo,
   } = useSelector((state) => state.user);
 
-  const [email, setEmail] = useState(userInfo.email);
-  const [password, setPassword] = useState(userInfo.password);
-  const [firstName, setFirstName] = useState(userInfo.firstname);
-  const [lastName, setLastName] = useState(userInfo.lastname);
-  const [city, setCity] = useState(userInfo.city);
-  const [zipCode, setZipCode] = useState(userInfo.zipcode);
-  const [areaCode, setAreaCode] = useState(userInfo.areacode);
-  const [phone, setPhone] = useState(userInfo.phone);
+  const [email, setEmail] = useState(userInfo.email || 'Example: John@gmail.com');
+  const [password, setPassword] = useState(userInfo.password || 'Example: 123456');
+  const [firstName, setFirstName] = useState(userInfo.firstname || 'Example: John');
+  const [lastName, setLastName] = useState(userInfo.lastname || 'Example: Water');
+  const [city, setCity] = useState(userInfo.city || 'Example: Millbrae');
+  const [zipCode, setZipCode] = useState(userInfo.zipcode || 'Example: 94030');
+  const [areaCode, setAreaCode] = useState(userInfo.areacode || 123);
+  const [phone, setPhone] = useState(userInfo.phone || 4567890);
   const [photo, setPhoto] = useState(userInfo.photo);
 
   const handleClicked = () => {

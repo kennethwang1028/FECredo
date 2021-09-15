@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import {
   RowStyle,
   EditButtonStyle,
+  WarningText,
 } from '../LogInStyle';
 
 const UserPhoneCard = (props) => {
@@ -25,6 +26,7 @@ const UserPhoneCard = (props) => {
         areafunc(Number(inputText.slice(0, 3)));
         phonefunc(Number(inputText.slice(3)));
         setIsEdit(!isEdit);
+        setIsWarning(false);
       }
     } else {
       setIsEdit(!isEdit);
@@ -49,6 +51,7 @@ const UserPhoneCard = (props) => {
         </EditButtonStyle>
       </RowStyle>
       <RowStyle>
+        {area === '123' && phone === '4567890' ? <>Example : </> : null}
         {!isEdit
           ? <>{`(${area}) ${phone.slice(0, 3)} - ${phone.slice(3)}`}</>
           : (
@@ -62,7 +65,7 @@ const UserPhoneCard = (props) => {
       </RowStyle>
       <RowStyle>
         {isWarning
-          ? <>Phone Number is not vailed</>
+          ? <WarningText>Phone Number is not vailed</WarningText>
           : <></>}
       </RowStyle>
 

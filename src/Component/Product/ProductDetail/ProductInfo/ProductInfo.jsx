@@ -36,7 +36,7 @@ const ProductInfo = () => {
 
   const [sizeId, setSizeId] = useState(skus[0].skusid);
   const [maxQty, setMaxQty] = useState(skus[0].quantity);
-  const [qty, setQty] = useState(0);
+  const [qty, setQty] = useState(1);
 
   const handleChangeSize = (event) => {
     const skusObj = skus.filter((i) => i.size === event.target.value);

@@ -16,8 +16,11 @@ const ProductRelated = () => {
     comsList,
     categoriesList,
   } = useSelector((state) => state.basicInfo);
+
   let width = useSelector((state) => state.window.countInfoWidth);
+
   const relateproduct = useSelector((state) => state.product.product.relatedproducts);
+
   const len = relateproduct.length;
   if (width < 400) {
     width = 400;

@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 import {
-  // PostUser,
+  PostUser,
   SetUserType,
 } from '../../Redux';
 
@@ -19,8 +20,12 @@ import {
 
 const SignUp = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
+
   const width = useSelector((state) => state.window.countInfoWidth);
-  const { userType } = useSelector((state) => state.user);
+  const {
+    userType,
+  } = useSelector((state) => state.user);
 
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -90,18 +95,25 @@ const SignUp = () => {
     if (arr.length > 0) {
       setListWarning(arr);
     } else {
-      // const user = {
-      //   first_name: firstName,
-      //   last_name: lastName,
-      //   email,
-      //   password,
-      //   city,
-      // };
-      // PostUser({ user });
-      console.error('Need to signup')
+      const user = {
+        first_name: firstName,
+        last_name: lastName,
+        email,
+        password,
+        city,
+      };
+      PostUser({
+        dispatch,
+        user,
+        type: userType
+      });
+      history.push('/login');
     }
   };
 
+  const handleClickedSignInAccount = () => {
+    history.push('/login');
+  };
   return (
     <LogInContainerStyle
       width={width}
@@ -156,6 +168,12 @@ const SignUp = () => {
           onClick={handleClickedCreateAccount}
         >
           Create your account
+        </SignInButtonStyle>
+        <>--------------------------------------------------------</>
+        <SignInButtonStyle
+          onClick={handleClickedSignInAccount}
+        >
+          Sign In your account
         </SignInButtonStyle>
         <div>
           {'By continuing, you agree to Forest\'s '}

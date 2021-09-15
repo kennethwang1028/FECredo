@@ -11,20 +11,40 @@ import {
 
 const LogIn = () => {
   const width = useSelector((state) => state.window.countInfoWidth);
-  const { isLoadUserInfo } = useSelector((state) => state.user);
+  const {
+    isLoadUserInfo,
+    isUserEmailExited,
+  } = useSelector((state) => state.user);
+
+  const renderPage = () => {
+    if (!isLoadUserInfo && !isUserEmailExited) {
+      return (
+        <>
+          <SignIn />
+          <LogInTextStyle> New to Forest?</LogInTextStyle>
+          <SignUpButtonStyle to="/signup">
+            Create Account
+          </SignUpButtonStyle>
+        </>
+      );
+    }
+    if (!isLoadUserInfo && isUserEmailExited) {
+      return (
+        <>
+          <LogInTextStyle> Email already Exited !!</LogInTextStyle>
+          <SignUpButtonStyle to="/signup">
+            Create Account
+          </SignUpButtonStyle>
+          <LogInTextStyle> or </LogInTextStyle>
+          <SignIn />
+        </>
+      );
+    }
+    return <SignedIn />;
+  };
   return (
     <LogInContainerStyle width={width}>
-      {!isLoadUserInfo
-        ? (
-          <>
-            <SignIn />
-            <LogInTextStyle> New to Forest?</LogInTextStyle>
-            <SignUpButtonStyle to="/signup">
-              Create Account
-            </SignUpButtonStyle>
-          </>
-        )
-        : <SignedIn />}
+      {renderPage()}
     </LogInContainerStyle>
   );
 };

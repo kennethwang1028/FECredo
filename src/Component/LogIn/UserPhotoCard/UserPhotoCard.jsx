@@ -28,7 +28,7 @@ const UserPhotoCard = (props) => {
       <RowStyle>
         <img
           alt="userPhoto"
-          src={inputText}
+          src={inputText === null ? './icon/no.jpeg' : inputText}
           width="100"
           height="100"
         />

@@ -6,6 +6,8 @@ import {
   SetProductMainImage,
   SetProductMainStyle,
   FetchProduct,
+  SetProductList,
+  SetProductIdList,
 } from '../../Redux';
 
 import ProductDetail from './ProductDetail/ProductDetail';
@@ -30,6 +32,7 @@ const Product = () => {
   useEffect(() => {
     const index = productIdList.indexOf(productId);
     if (index >= 0) {
+      const id = productIdList[index];
       const data = productList[index];
       const style = null || data.styles[0];
       const photo = null || style.photos[0];
@@ -37,6 +40,14 @@ const Product = () => {
       dispatch(SetProductMainStyle(style));
       dispatch(SetProductMainImage(photo));
       setLoading(true);
+      const newProductIdList = [...productIdList];
+      newProductIdList.splice(index, 1);
+      newProductIdList.push(id);
+      dispatch(SetProductIdList(newProductIdList));
+      const newProductList = [...productList];
+      newProductList.splice(index, 1);
+      newProductList.push(data);
+      dispatch(SetProductList(newProductList));
     } else {
       FetchProduct({
         dispatch,

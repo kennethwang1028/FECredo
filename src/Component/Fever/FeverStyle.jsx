@@ -14,6 +14,14 @@ export const FeverContainerStyle = styled.div`
   position:relative;
 `;
 
+export const FeverStyle = styled.div`
+  display: flex;
+  min-width: 360px;
+  flex-direction: column;
+  justify-content: flex-start;
+  width:  ${(props) => props.width}px;
+`;
+
 // SignUpButtonStyle;
 export const LogInButtonStyle = styled(Link)`
   width:300px;
@@ -30,4 +38,15 @@ export const LogInButtonStyle = styled(Link)`
   &:active{
     color:white
   }
+`;
+
+// LogInTextStyle
+export const LogInTextStyle = styled.div`
+  font-size:24px;
+  color: #9399a3;
+`;
+
+export const CategorySelectStyle = styled.select`
+  font-size: 3vw;
+  display: flex;
 `;

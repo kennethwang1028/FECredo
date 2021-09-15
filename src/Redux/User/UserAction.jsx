@@ -7,6 +7,7 @@ import {
   userInfo,
   isLoadUserInfo,
   userFeverList,
+  isUserEmailExited,
 } from './UserType';
 
 export const SetUserType = (type = 'user') => ({
@@ -39,12 +40,19 @@ export const SetUserFeverList = (list = []) => ({
   payload: list,
 });
 
+export const IsUserEmailExited = (bool) =>({
+  type: isUserEmailExited,
+  payload: bool,
+});
+
 export const FetchIsUserEmailVailed = ({
   dispatch = () => {},
   email = '',
+  type = '',
 }) => {
-  axios(`http://localhost:3001/SDCredo/fecuseremail/${email}`)
+  axios(`http://localhost:3001/SDCredo/fec${type}email/${email}`)
     .then((res) => {
+      console.log(res)
       if (res.data.length !== 0) {
         dispatch(IsUserEmailVailed(true));
       } else {
@@ -58,9 +66,11 @@ export const FetchUser = ({
   dispatch = () => {},
   email = '',
   password = '',
+  type = '',
 }) => {
-  axios(`http://localhost:3001/SDCredo/fecuser/${email}/${[password]}`)
+  axios(`http://localhost:3001/SDCredo/fec${type}/${email}/${[password]}`)
     .then((res) => {
+      console.log(res,'sd');
       if (res.data.length !== 0) {
         dispatch(IsUserPasswordVailed(true));
         dispatch(SetUserInfo(res.data[0]));
@@ -75,11 +85,11 @@ export const FetchUser = ({
 export const FetchUserFever = ({
   dispatch = () => {},
   userid = '',
+  type = 'user',
 }) => {
-  axios(`http://localhost:3001/SDCredo/fecuserfever/${userid}`)
+  axios(`http://localhost:3001/SDCredo/fec${type}fever/${userid}`)
     .then((res) => {
-      console.log(res);
-      dispatch(SetUserFeverList(res));
+      dispatch(SetUserFeverList(res.data));
     })
     .catch((err) => console.log(err));
 };
@@ -89,9 +99,10 @@ export const FetchUpdateUserInfo = ({
   userid = 1,
   title = '',
   value = '',
+  type = 'user',
 }) => {
   const option = title.toLowerCase().replace(' ', '_');
-  axios.put(`http://localhost:3001/SDCredo/fecuser/update/${userid}/${option}/${value}`)
+  axios.put(`http://localhost:3001/SDCredo/fec${type}/update/${userid}/${option}/${value}`)
     .then((res) => console.log(res))
     .catch((err) => console.log(err));
 };
@@ -99,12 +110,29 @@ export const FetchUpdateUserInfo = ({
 export const PostUser = ({
   dispatch = () => {},
   user = {},
+  type = 'user',
 }) => {
-  fetch('http://localhost:3001/SDCredo/fecuser', {
-    method: 'POST',
-    body: user,
-  })
-    .then((res) => res.json())
-    .then((res) => console.log(res, 'asd'))
+  const { email } = user;
+  const emailCheckURL = `http://localhost:3001/SDCredo/fec${type}email/${email}`;
+  const PostUserURL = `http://localhost:3001/SDCredo/fec${type}`;
+
+  axios(emailCheckURL)
+    .then((res) => {
+      if (res.data.length === 0) {
+        dispatch(IsUserEmailExited(false));
+        axios.post(PostUserURL, {
+          user,
+        })
+          .then((data) => {
+            dispatch(IsUserEmailVailed(true));
+            dispatch(IsUserPasswordVailed(true));
+            dispatch(SetUserInfo(data.data));
+            dispatch(IsLoadUserInfo(true));
+          })
+          .catch((err) => console.log(err));
+      } else {
+        dispatch(IsUserEmailExited(true));
+      }
+    })
     .catch((err) => console.log(err));
 };

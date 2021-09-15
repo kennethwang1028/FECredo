@@ -16,6 +16,7 @@ export {
   IsUserPasswordVailed,
   IsLoadUserInfo,
   PostUser,
+  FetchUserFever,
 } from './User/UserAction';
 
 export {

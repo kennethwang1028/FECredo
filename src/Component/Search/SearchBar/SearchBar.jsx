@@ -4,21 +4,22 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   LoadProductsList,
   LoadProductsListLength,
-  CategoryMainSelected,
   SearchTextEnter,
+  CategoryMainSelected,
 } from '../../../Redux';
 
 import {
   SearchCategoryBox,
   SearchCategoryInput,
   SearchCategoryButton,
-  SearchSelect,
+  SearchSelectStyle,
 } from '../SearchStyle';
 
 const SearchBar = () => {
   const dispatch = useDispatch();
 
   const categoriesList = useSelector((state) => state.basicInfo.categoriesList);
+
   const {
     categoryMain,
     searchText,
@@ -56,7 +57,7 @@ const SearchBar = () => {
 
   return (
     <SearchCategoryBox>
-      <SearchSelect
+      <SearchSelectStyle
         onChange={handleChangeSelect}
       >
         {categoriesList.map((i) => (
@@ -64,7 +65,7 @@ const SearchBar = () => {
             {i.categoryname}
           </option>
         ))}
-      </SearchSelect>
+      </SearchSelectStyle>
       <SearchCategoryInput
         type="text"
         onChange={handleChangeText}

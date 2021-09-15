@@ -13,6 +13,7 @@ import {
 import {
   RowStyle,
   EditButtonStyle,
+  WarningText,
 } from '../LogInStyle';
 
 const UserInfoCard = (props) => {
@@ -25,6 +26,7 @@ const UserInfoCard = (props) => {
   const dispatch = useDispatch();
   const {
     userInfo,
+    userType,
   } = useSelector((state) => state.user);
 
   const [isEdit, setIsEdit] = useState(false);
@@ -51,10 +53,10 @@ const UserInfoCard = (props) => {
         newUserInfo[option] = value;
         dispatch(SetUserInfo(newUserInfo));
         FetchUpdateUserInfo({
-          dispatch,
           userid: userInfo.id,
           title: text,
           value,
+          type: userType,
         });
         setIsEdit(!isEdit);
         func(inputText);
@@ -95,7 +97,7 @@ const UserInfoCard = (props) => {
       </RowStyle>
       <RowStyle>
         {isWarning
-          ? <>{`${text} is not vailed`}</>
+          ? <WarningText>{`${text} is not vailed`}</WarningText>
           : <></>}
       </RowStyle>
     </>

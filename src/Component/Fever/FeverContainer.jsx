@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import {
   FetchUser,
+  FetchUserFever,
 } from '../../Redux';
 
 import Fever from './Fever/Fever';
@@ -13,18 +14,35 @@ import {
 } from './FeverStyle';
 
 const FeverContainer = () => {
-  const { isLoadUserInfo } = useSelector((state) => state.user);
+  const {
+    isLoadUserInfo,
+    userInfo,
+    userType,
+  } = useSelector((state) => state.user);
+
   /// delet this later
   const dispatch = useDispatch();
 
   useEffect(() => {
     FetchUser({
+      type: userType,
       dispatch,
       email: '123@gmail.com',
       password: '123456',
     });
   }, []);
-  //
+  ///
+
+  useEffect(() => {
+    if (isLoadUserInfo) {
+      FetchUserFever({
+        type: userType,
+        dispatch,
+        userid: userInfo.id,
+      });
+    }
+  }, [userInfo.id, isLoadUserInfo]);
+
   return (
     <FeverContainerStyle>
       {

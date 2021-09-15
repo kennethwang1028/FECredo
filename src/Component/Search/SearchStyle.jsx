@@ -73,7 +73,7 @@ export const SearchCategoryButton = styled.button`
   margin-left:0.5vw;
 `;
 
-export const SearchSelect = styled.select`
+export const SearchSelectStyle = styled.select`
   font-size: 3vw;
   display: flex;
 `;

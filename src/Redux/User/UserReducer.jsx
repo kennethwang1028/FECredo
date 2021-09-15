@@ -5,9 +5,11 @@ import {
   userInfo,
   isLoadUserInfo,
   userFeverList,
+  isUserEmailExited,
 } from './UserType';
 
 const initState = {
+  isUserEmailExited: false,
   userType: 'user',
   isUserEmailVailed: null,
   isUserPasswordVailed: null,
@@ -41,6 +43,10 @@ const userReducer = (state = initState, action) => {
     case userFeverList: return {
       ...state,
       userFeverList: action.payload,
+    };
+    case isUserEmailExited: return {
+      ...state,
+      isUserEmailExited: action.payload,
     };
     default: return state;
   }

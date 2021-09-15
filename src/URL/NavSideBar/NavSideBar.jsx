@@ -29,6 +29,19 @@ const NavSideBar = () => {
     isSideBarClicked,
   } = useSelector((state) => state.window);
 
+  const {
+    userType,
+    isLoadUserInfo,
+  } = useSelector((state) => state.user);
+
+  if (userType === 'owner' && isLoadUserInfo) {
+    iconArray[2] = 'add';
+    iconTextArray[2] = 'Add';
+  } else {
+    iconArray[2] = 'bookmark';
+    iconTextArray[2] = 'Bookmark';
+  }
+
   let numberofIcons = Math.floor(countWindowHeight / 50) - 4;
   if (numberofIcons > num) {
     numberofIcons = num;
