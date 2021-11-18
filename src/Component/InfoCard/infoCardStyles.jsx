@@ -68,3 +68,28 @@ export const TextStyle = styled.p`
     -webkit-line-clamp: 10;
   }
 `;
+
+export const Img70Style = styled.img`
+  border-radius:5px;
+  border: 1px solid black;
+`;
+
+export const Text70Style = styled.p`
+  font-size: 16px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  margin:0px;
+  margin-top:5px;
+`;
+
+export const ColumnButtonStyle = styled.button`
+  width:${(props) => props.width}px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 5px;
+  padding: 3px;
+  border-radius:5px;
+`;

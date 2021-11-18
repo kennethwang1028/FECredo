@@ -101,11 +101,14 @@ const SignUp = () => {
         email,
         password,
         city,
+        show_fever_list: true,
+        show_shopping_list: true,
+        auto_add_friends: true,
       };
       PostUser({
         dispatch,
         user,
-        type: userType
+        type: userType,
       });
       history.push('/login');
     }

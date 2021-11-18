@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import {
@@ -6,6 +6,13 @@ import {
   IsUserEmailVailed,
   IsUserPasswordVailed,
   IsLoadUserInfo,
+  LoadUserFever,
+  LoadUserFriendsList,
+  LoadUserShopList,
+  SetUserShopOrderedList,
+  SetUserShopList,
+  SetUserFeverList,
+  SetUserFriendsList,
 } from '../../../Redux';
 
 import UserInfoCard from '../UserInfoCard/UserInfoCard';
@@ -25,6 +32,10 @@ const SignedIn = () => {
     userInfo,
   } = useSelector((state) => state.user);
 
+  const {
+    userShopList,
+  } = useSelector((state) => state.shopCart);
+
   const [email, setEmail] = useState(userInfo.email || 'Example: John@gmail.com');
   const [password, setPassword] = useState(userInfo.password || 'Example: 123456');
   const [firstName, setFirstName] = useState(userInfo.firstname || 'Example: John');
@@ -35,8 +46,30 @@ const SignedIn = () => {
   const [phone, setPhone] = useState(userInfo.phone || 4567890);
   const [photo, setPhoto] = useState(userInfo.photo);
 
+  useEffect(() => {
+    if (userInfo.email) {
+      LoadUserFever({
+        dispatch,
+        userid: userInfo.id,
+      });
+      LoadUserFriendsList({
+        dispatch,
+        userid: userInfo.id,
+      });
+      LoadUserShopList({
+        dispatch,
+        userid: userInfo.id,
+        shopList: userShopList,
+      });
+    }
+  }, [userInfo]);
+
   const handleClicked = () => {
     dispatch(SetUserInfo({}));
+    dispatch(SetUserShopOrderedList([]));
+    dispatch(SetUserShopList([]));
+    dispatch(SetUserFeverList([]));
+    dispatch(SetUserFriendsList([]));
     dispatch(IsUserEmailVailed(null));
     dispatch(IsUserPasswordVailed(null));
     dispatch(IsLoadUserInfo(false));

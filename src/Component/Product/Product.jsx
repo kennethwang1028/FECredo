@@ -10,6 +10,8 @@ import {
   SetProductIdList,
 } from '../../Redux';
 
+import urlCreated from '../Function/urlCreated';
+
 import ProductDetail from './ProductDetail/ProductDetail';
 import ProductRelated from './ProductRelated/ProductRelated';
 
@@ -21,6 +23,9 @@ const Product = () => {
   const dispatch = useDispatch();
 
   const width = useSelector((state) => state.window.countInfoWidth);
+
+  const { comsList } = useSelector((state) => state.basicInfo);
+
   const {
     productId,
     productIdList,
@@ -38,22 +43,29 @@ const Product = () => {
       const photo = null || style.photos[0];
       dispatch(SetProduct(data));
       dispatch(SetProductMainStyle(style));
-      dispatch(SetProductMainImage(photo));
+      dispatch(SetProductMainImage((
+        urlCreated({
+          photo,
+          comsList,
+        }))));
       setLoading(true);
       const newProductIdList = [...productIdList];
       newProductIdList.splice(index, 1);
       newProductIdList.push(id);
-      dispatch(SetProductIdList(newProductIdList));
+
       const newProductList = [...productList];
       newProductList.splice(index, 1);
       newProductList.push(data);
       dispatch(SetProductList(newProductList));
+      dispatch(SetProductIdList(newProductIdList));
     } else {
       FetchProduct({
         dispatch,
         productId,
         productList,
         productIdList,
+        comsList,
+        urlCreated,
         func: setLoading,
       });
     }

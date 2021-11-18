@@ -18,7 +18,6 @@ export const SignInContainerStyle = styled.div`
   width:300px;
   flex-direction: column;
   border: 3px solid #9399a3;
-  justify-content: space-between;
   border-radius: 5px;
   padding: 15px;
   font-size: 16px;
@@ -103,6 +102,13 @@ export const SwitcherStyle = styled.button`
 export const RowStyle = styled.div`
   display:flex;
   flex-direction:row;
+  justify-content: space-between;
+`;
+
+export const ColumnStyle = styled.div`
+  display:flex;
+  flex-direction:column;
+  height: 85px;
   justify-content: space-between;
 `;
 

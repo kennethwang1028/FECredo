@@ -6,6 +6,8 @@ import {
   isLoadUserInfo,
   userFeverList,
   isUserEmailExited,
+  userFriendsList,
+  userOrderList,
 } from './UserType';
 
 const initState = {
@@ -16,6 +18,8 @@ const initState = {
   userInfo: {},
   isLoadUserInfo: false,
   userFeverList: [],
+  userFriendsList: [],
+  userOrderList: [],
 };
 
 const userReducer = (state = initState, action) => {
@@ -44,9 +48,17 @@ const userReducer = (state = initState, action) => {
       ...state,
       userFeverList: action.payload,
     };
+    case userFriendsList: return {
+      ...state,
+      userFriendsList: action.payload,
+    };
     case isUserEmailExited: return {
       ...state,
       isUserEmailExited: action.payload,
+    };
+    case userOrderList: return {
+      ...state,
+      userOrderList: action.payload,
     };
     default: return state;
   }

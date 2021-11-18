@@ -10,7 +10,7 @@ import {
 const initState = {
   product: {},
   productId: 1,
-  productMainImageURL: 0,
+  productMainImageURL: '',
   productMainStyle: {},
   productList: [],
   productIdList: [],

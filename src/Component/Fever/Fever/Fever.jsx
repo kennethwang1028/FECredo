@@ -1,9 +1,7 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 
-import {
-  FetchUserFever,
-} from '../../../Redux';
+import FeverItems from '../FeverItems/FeverItems';
 
 import {
   LogInTextStyle,
@@ -12,8 +10,6 @@ import {
 } from '../FeverStyle';
 
 const Fever = () => {
-  const dispatch = useDispatch();
-
   const {
     userInfo,
     userFeverList,
@@ -33,10 +29,29 @@ const Fever = () => {
     city,
   } = userInfo;
 
+  const [categoryId, setCategoryId] = useState(0);
+  const [categoryList, setCategoryList] = useState(categoriesList);
+
+  useEffect(() => {
+    const newList = [{ categoryid: 0, categoryname: 'All' }];
+    const idCheckList = [0];
+    for (let i = 0; i < userFeverList.length; i += 1) {
+      const obj = userFeverList[i];
+      if (!idCheckList.includes(obj.category_id)) {
+        idCheckList.push(obj.category_id);
+        newList.push({
+          categoryid: obj.category_id,
+          categoryname: categoriesList[obj.category_id].categoryname,
+        });
+      }
+    }
+    setCategoryList(newList);
+  }, [userFeverList]);
+
   const handleChangeSelect = (event) => {
     const index = event.target.selectedIndex;
-    const id = categoriesList[index].categoryid;
-    console.log(event.target)
+    const id = categoryList[index].categoryid;
+    setCategoryId(id);
   };
 
   return (
@@ -49,12 +64,17 @@ const Fever = () => {
       <CategorySelectStyle
         onChange={handleChangeSelect}
       >
-        {categoriesList.map((i) => (
+        {categoryList.map((i) => (
           <option key={i.categoryid}>
             {i.categoryname}
           </option>
         ))}
       </CategorySelectStyle>
+      <FeverItems
+        productList={userFeverList}
+        categoryid={categoryId}
+        showCancelbutton
+      />
     </FeverStyle>
   );
 };

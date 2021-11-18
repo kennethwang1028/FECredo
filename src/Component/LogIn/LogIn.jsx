@@ -3,17 +3,23 @@ import { useSelector } from 'react-redux';
 
 import SignIn from './SignIn/SignIn';
 import SignedIn from './SignedIn/SignedIn';
+import FriendsList from './FriendsList/FriendsList';
+
 import {
   LogInContainerStyle,
   LogInTextStyle,
   SignUpButtonStyle,
+  RowStyle,
+  ColumnStyle,
 } from './LogInStyle';
 
 const LogIn = () => {
   const width = useSelector((state) => state.window.countInfoWidth);
+
   const {
     isLoadUserInfo,
     isUserEmailExited,
+    userInfo,
   } = useSelector((state) => state.user);
 
   const renderPage = () => {
@@ -28,6 +34,7 @@ const LogIn = () => {
         </>
       );
     }
+
     if (!isLoadUserInfo && isUserEmailExited) {
       return (
         <>
@@ -40,8 +47,48 @@ const LogIn = () => {
         </>
       );
     }
-    return <SignedIn />;
+
+    if (isLoadUserInfo && width <= 600) {
+      return <SignedIn />;
+    }
+
+    if (isLoadUserInfo && width >= 1200) {
+      return (
+        <RowStyle>
+          <FriendsList
+            list={userInfo.waitingtoaddfriendslist || []}
+            type="Friends Request List"
+            userInfo={userInfo}
+          />
+          <SignedIn />
+          <FriendsList
+            list={userInfo.waitingtogetresponedlist || []}
+            type="Friedns Waiting List"
+            userInfo={userInfo}
+          />
+        </RowStyle>
+      );
+    }
+
+    return (
+      <RowStyle>
+        <ColumnStyle>
+          <FriendsList
+            list={userInfo.waitingtoaddfriendslist || []}
+            type="Friends Request List"
+            userInfo={userInfo}
+          />
+          <FriendsList
+            list={userInfo.waitingtogetresponedlist || []}
+            type="Friedns Waiting List"
+            userInfo={userInfo}
+          />
+        </ColumnStyle>
+        <SignedIn />
+      </RowStyle>
+    );
   };
+
   return (
     <LogInContainerStyle width={width}>
       {renderPage()}

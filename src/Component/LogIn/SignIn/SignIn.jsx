@@ -3,8 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import {
   SetUserType,
-  FetchIsUserEmailVailed,
-  FetchUser,
+  LoadIsUserEmailVailed,
+  LoadUser,
 } from '../../../Redux';
 
 import checkEmail from '../../Function/checkEmail';
@@ -57,13 +57,13 @@ const SignIn = () => {
       setIsWarningPassword(false);
     }
     if (emailChecked && !isWarningEmail) {
-      FetchIsUserEmailVailed({
+      LoadIsUserEmailVailed({
         dispatch,
         type: userType,
         email,
       });
       if (passwordChecked && !isWarningPassword) {
-        FetchUser({
+        LoadUser({
           dispatch,
           email,
           password,

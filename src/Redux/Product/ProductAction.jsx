@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+// import urlCreated from '../../Component/Function/urlCreated';
+
 import {
   Product,
   productMainImageURL,
@@ -45,15 +47,21 @@ export const FetchProduct = ({
   func = () => {},
   productList = [],
   productIdList = [],
+  comsList = {},
+  urlCreated = () => {},
 }) => {
   axios(`http://localhost:3001/SDCredo/product/${productId}`)
     .then((res) => {
       const data = res.data[0];
       const style = data.styles[0];
-      const photo = null || style.photos[0];
+      const photo = style.photos[0] || null;
       dispatch(SetProduct(data));
       dispatch(SetProductMainStyle(style));
-      dispatch(SetProductMainImage(photo));
+      const url = urlCreated({
+        photo,
+        comsList,
+      });
+      dispatch(SetProductMainImage(url));
       func(true);
       dispatch(SetProductList([...productList, data]));
       dispatch(SetProductIdList([...productIdList, data.productid]));

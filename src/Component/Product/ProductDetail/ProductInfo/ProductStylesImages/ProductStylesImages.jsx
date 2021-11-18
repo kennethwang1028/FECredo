@@ -24,7 +24,10 @@ const ProductStylesImages = () => {
     const { id } = event.target;
     const style = styles.filter((i) => i.styleid === Number(id));
     dispatch(SetProductMainStyle(style[0]));
-    dispatch(SetProductMainImage(style[0].photos[0]));
+    dispatch(SetProductMainImage(urlCreated({
+      photo: style[0].photos[0],
+      comsList,
+    })));
   };
 
   return (

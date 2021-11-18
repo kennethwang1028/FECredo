@@ -1,53 +1,74 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 
-import {
-  FetchUser,
-  FetchUserFever,
-} from '../../Redux';
+import urlCreated from '../Function/urlCreated';
 
 import Fever from './Fever/Fever';
+import FeverItems from './FeverItems/FeverItems';
+import FriendsFever from './FriendsFever/FriendsFever';
+import AddFriends from './AddFriends/AddFriends';
 
 import {
   FeverContainerStyle,
   LogInButtonStyle,
+  LogInTextStyle,
+  FeverStyle,
 } from './FeverStyle';
 
 const FeverContainer = () => {
   const {
     isLoadUserInfo,
-    userInfo,
-    userType,
   } = useSelector((state) => state.user);
 
-  /// delet this later
-  const dispatch = useDispatch();
+  const {
+    productList,
+  } = useSelector((state) => state.product);
+
+  const {
+    comsList,
+  } = useSelector((state) => state.basicInfo);
+
+  const [recentlyList, setRecentlyList] = useState([]);
 
   useEffect(() => {
-    FetchUser({
-      type: userType,
-      dispatch,
-      email: '123@gmail.com',
-      password: '123456',
+    const newList = productList.map((i) => {
+      const newObj = {
+        product_id: i.productid,
+        product_name: i.productname,
+        price: i.styles[0].price,
+        category_id: i.category.categoryid,
+        photo: urlCreated({
+          photo: i.styles[0].photos[0],
+          comsList,
+        }),
+      };
+      return newObj;
     });
-  }, []);
-  ///
-
-  useEffect(() => {
-    if (isLoadUserInfo) {
-      FetchUserFever({
-        type: userType,
-        dispatch,
-        userid: userInfo.id,
-      });
-    }
-  }, [userInfo.id, isLoadUserInfo]);
+    setRecentlyList(newList);
+  }, [productList]);
 
   return (
     <FeverContainerStyle>
+      <FeverStyle>
+        <LogInTextStyle>
+          Recently View
+        </LogInTextStyle>
+        <FeverItems
+          productList={recentlyList}
+        />
+      </FeverStyle>
       {
         isLoadUserInfo
-          ? <Fever />
+          ? (
+            <>
+              <LogInTextStyle>
+                Fever Items
+              </LogInTextStyle>
+              <Fever />
+              <AddFriends />
+              <FriendsFever />
+            </>
+          )
           : (
             <>
               <>Please Log In Your Account</>

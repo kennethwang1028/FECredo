@@ -7,7 +7,7 @@ import checkPassword from '../../Function/checkPassword';
 
 import {
   SetUserInfo,
-  FetchUpdateUserInfo,
+  UpdateUserInfo,
 } from '../../../Redux';
 
 import {
@@ -52,7 +52,7 @@ const UserInfoCard = (props) => {
       if (warning === false) {
         newUserInfo[option] = value;
         dispatch(SetUserInfo(newUserInfo));
-        FetchUpdateUserInfo({
+        UpdateUserInfo({
           userid: userInfo.id,
           title: text,
           value,

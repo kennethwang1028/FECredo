@@ -195,3 +195,16 @@ export const Select = styled.select`
     height:5vw;
   }
 `;
+
+export const AddFeverButton = styled.button`
+  clip-path: polygon(
+    50% 0%, 61% 35%, 98% 35%,
+    68% 57%, 79% 91%, 50% 70%,
+    21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  width: 30px;
+  height: 30px;
+  background-color:${(props) => (props.isFever ? 'yellow' : 'white')};
+  &: active {
+    background-color:grey;
+  }
+`;

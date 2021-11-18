@@ -27,7 +27,7 @@ const ProductList = () => {
             photo: i.photo,
             comsList,
           })}
-          features={i.features}
+          features={i.features || []}
         />
       ))}
     </ColumnContainerStyle>

@@ -15,24 +15,36 @@ import {
 
 const ProductImage = () => {
   const dispatch = useDispatch();
+
   const width = useSelector((state) => state.window.countInfoWidth);
+
   const {
     comsList,
   } = useSelector((state) => state.basicInfo);
+
   const {
     productMainImageURL,
     productMainStyle,
   } = useSelector((state) => state.product);
 
   const [zoomCount, setZoomCount] = useState(0);
+  const [photoIndex, setPhotoIndex] = useState(0);
+  const [photosList, setPhotosList] = useState(productMainStyle.photos);
 
   const sizeNum = 260 * (1 + zoomCount * 0.25);
-  const photosList = productMainStyle.photos;
-  const stylePhotoIdList = photosList.map((i) => i.photoid);
+
+  useEffect(() => {
+    setPhotosList(productMainStyle.photos);
+    setPhotoIndex(0);
+  }, [productMainStyle]);
 
   useEffect(() => {
     setZoomCount(0);
-  }, [productMainImageURL.url]);
+    dispatch(SetProductMainImage(urlCreated({
+      photo: photosList[photoIndex],
+      comsList,
+    })));
+  }, [photoIndex]);
 
   const handleClickedZoomIn = () => {
     setZoomCount(zoomCount + 1);
@@ -43,37 +55,41 @@ const ProductImage = () => {
   };
 
   const handleClickedPrev = () => {
-    const index = stylePhotoIdList.indexOf(productMainImageURL.photoid);
-    if (index === photosList.length - 1) {
-      dispatch(SetProductMainImage(photosList[0]));
+    if (photoIndex === 0) {
+      const index = photosList.length - 1;
+      setPhotoIndex(index);
     } else {
-      dispatch(SetProductMainImage(photosList[index + 1]));
+      setPhotoIndex(photoIndex - 1);
     }
   };
 
   const handleClickedNext = () => {
-    const index = stylePhotoIdList.indexOf(productMainImageURL.photoid);
-    if (index === 0) {
-      dispatch(SetProductMainImage(photosList[photosList.length - 1]));
+    const maxIndex = photosList.length - 1;
+    if (photoIndex === maxIndex) {
+      setPhotoIndex(0);
     } else {
-      dispatch(SetProductMainImage(photosList[index - 1]));
+      setPhotoIndex(photoIndex + 1);
     }
   };
 
+  const indexChanged = (index) => {
+    setPhotoIndex(index);
+  };
   return (
     <ProductImageContainer isRow={width > 700}>
       <ProductImageButton
-        onClick={handleClickedNext}
+        onClick={handleClickedPrev}
       >
         {'<<'}
       </ProductImageButton>
-      <ProductSmallImages />
+      <ProductSmallImages
+        photosList={photosList}
+        photoIndex={photoIndex}
+        indexChanged={indexChanged}
+      />
       <ProductMainImageContainer>
         <img
-          src={urlCreated({
-            photo: productMainImageURL,
-            comsList,
-          })}
+          src={productMainImageURL}
           width={sizeNum}
           height="auto"
           alt=""
@@ -95,7 +111,7 @@ const ProductImage = () => {
         </ProductImageButton>
       </ProductSmallImageContainer>
       <ProductImageButton
-        onClick={handleClickedPrev}
+        onClick={handleClickedNext}
       >
         {'>>'}
       </ProductImageButton>

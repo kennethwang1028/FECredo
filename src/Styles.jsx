@@ -29,7 +29,7 @@ export const NavSideBarContainerStyle = styled.div`
 `;
 
 export const NavInfoContainerStyle = styled.div`
-  background: red;
+  background: white;
   width: ${(props) => (props.width)}px;
   min-width: 400px;
   display:flex;

@@ -7,6 +7,7 @@ import LogIn from '../Component/LogIn/LogIn';
 import SignUp from '../Component/LogIn/SignUp';
 import Product from '../Component/Product/Product';
 import FeverContainer from '../Component/Fever/FeverContainer';
+import ShopCartContainer from '../Component/ShopCart/ShopCartContainer';
 import { RoutesContainerStyle } from '../Styles';
 
 const Routes = () => (
@@ -34,8 +35,9 @@ const Routes = () => (
       <Route
         path="/shopcart"
         exact
-        render={() => <div>shopcart</div>}
-      />
+      >
+        <ShopCartContainer />
+      </Route>
       <Route
         path="/login"
         exact

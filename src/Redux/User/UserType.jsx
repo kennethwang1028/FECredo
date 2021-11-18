@@ -5,3 +5,5 @@ export const isUserPasswordVailed = 'is_user_password_vaild';
 export const userInfo = 'user_info';
 export const isLoadUserInfo = 'is_load_user_info';
 export const userFeverList = 'user_fever_list';
+export const userFriendsList = 'user_friends_list';
+export const userOrderList = 'user_order_list';

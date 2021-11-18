@@ -50,3 +50,51 @@ export const CategorySelectStyle = styled.select`
   font-size: 3vw;
   display: flex;
 `;
+
+export const RowContainer = styled.div`
+  display: flex;
+  width:  ${(props) => props.width}px;
+  min-width: 390px;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+`;
+
+export const FeverButton = styled.button`
+  width: 45px;
+  height: 60px;
+  border-radius:10px;
+  font-size:16px;
+`;
+
+export const FeverDeleteButton = styled.button`
+  width: 30px;
+  height: 30px;
+  clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
+  background-color: red;
+  color: red;
+  &:hover{
+    background-color: Crimson;
+  }
+  &:active{
+    background-color: darkred;
+  }
+`;
+
+export const FeverDeleteContainer = styled.div`
+  display:flex;
+  justify-content:flex-end;
+  padding:3px;
+`;
+
+export const FeverItemDeletedButton = styled(FeverDeleteButton)`
+  width: 15px;
+  height: 15px;
+  margin-bottom: -10px;
+  `;
+
+export const FeverItemContainer = styled.div`
+  display:flex;
+  flex-direction: column;
+  align-items: flex-end;
+`;
